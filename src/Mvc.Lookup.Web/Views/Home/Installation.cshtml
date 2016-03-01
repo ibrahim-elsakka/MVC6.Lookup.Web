@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "MVC.Lookup installation";
+}
+
+<div class="docs content-block">
+    <div class="widget">
+        <div class="widget-header">
+            <i class="fa fa-bars"></i>
+            Installation
+            <span class="widget-buttons">
+                <i class="content-toggle"></i>
+            </span>
+        </div>
+        <div class="widget-content">
+            <p>
+                Install MVC.Lookup package from nuget.
+            </p>
+            <pre>> Install-Package NonFactors.Lookup.Mvc6</pre>
+            <p>
+                Include lookup styling sheet, they can be found at {Username}/.dnx/packages/NonFactors.Lookup.Mvc6.
+            </p>
+            <pre>
+&lt;link href="~/Content/bootstrap.css" rel="stylesheet" /&gt;
+&lt;link href="~/Content/jquery-ui.css" rel="stylesheet" /&gt;
+&lt;link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet" /&gt;</pre>
+            <p>
+                Include lookup scripts after jQuery scripts.
+            </p>
+            <pre>
+&lt;script src="~/Scripts/jquery.js" /&gt;
+&lt;script src="~/Scripts/jquery-ui.js" /&gt;
+&lt;script src="~/Scripts/MvcLookup/mvc-lookup.js" /&gt;</pre>
+            <p>
+                Render lookup dialog's partial in layout page.
+            </p>
+            <pre>@@Html.Partial("MvcLookup/_Dialog")</pre>
+        </div>
+    </div>
+</div>

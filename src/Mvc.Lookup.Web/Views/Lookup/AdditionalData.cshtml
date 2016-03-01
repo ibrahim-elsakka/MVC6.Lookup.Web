@@ -1,0 +1,219 @@
+﻿@model PersonModel
+@{
+    ViewBag.Title = "Lookup additional data";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="example content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-bars"></i>
+                    Autocomplete
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+                    @Html.TextBox("HiddenAutocompleteData", null, new { @class = "form-control" })
+                    <br />
+                    @Html.AutoCompleteFor(model => model.Id, new PeopleAutocomplete())
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="example content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-bars"></i>
+                    Autocomplete + Lookup
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+                    @Html.TextBox("HiddenLookupData", null, new { @class = "form-control" })
+                    <br />
+                    @Html.LookupFor(model => model.Id, new PeopleLookup())
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    View
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+@@model <span class="cls">PersonModel</span>
+
+@@Html.TextBox(<span class="str">"HiddenData"</span>)
+
+@@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
+
+$(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
+    select: <span class="kwrd">function</span> (event, element, hiddenElement, data) {
+        $(<span class="str">'#HiddenData'</span>).val(data[<span class="str">'HiddenKey'</span>]);
+    }
+}
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    View
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+@@model <span class="cls">PersonModel</span>
+
+@@Html.TextBox(<span class="str">"HiddenData"</span>)
+
+@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
+
+$(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
+    select: <span class="kwrd">function</span> (event, element, hiddenElement, data) {
+        $(<span class="str">'#HiddenData'</span>).val(data[<span class="str">'HiddenKey'</span>]);
+    }
+}
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    Controller
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+[<span class="cls">HttpGet</span>]
+<span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
+{
+    <span class="kwd">return</span> View();
+}
+
+<span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
+{
+    <span class="kwd">return</span> GetData(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(), filter);
+}
+
+<span class="kwd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">AbstractLookup</span> lookup, <span class="cls">LookupFilter</span> filter)
+{
+    lookup.CurrentFilter = filter;
+
+    <span class="kwd">return</span> Json(lookup.GetData());
+}
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    PeopleLookup
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">GenericLookup</span>&lt;<span class="cls">PersonModel</span>&gt;
+{
+    <span class="kwd">public</span> PeopleLookup()
+    {
+        LookupUrl = <span class="str">"Default"</span>;
+    }
+
+    <span class="kwd">protected override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
+    {
+        <span class="kwd">return</span> <span class="cls">PeopleRepository</span>.GetPeople();
+    }
+
+    <span class="kwd">protected override void</span> AddAdditionalData(<span class="cls">Dictionary</span>&lt;<span class="cls">String</span>, <span class="cls">String</span>&gt; row, <span class="cls">PersonModel</span> model)
+    {
+        row.Add(<span class="str">"HiddenKey"</span>, <span class="str">"Hidden data for ID: "</span> + model.Id);
+    }
+}
+
+<span class="kwd">public class</span> <span class="cls">PersonModel</span>
+{
+    <span class="kwd">public</span> <span class="cls">Int32</span> Id { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">LookupColumn</span>]
+    [<span class="cls">Display</span>(Name = <span class="str">"Name"</span>)]
+    <span class="kwd">public</span> <span class="cls">String</span> Name { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">LookupColumn</span>]
+    [<span class="cls">Display</span>(Name = <span class="str">"Surname"</span>)]
+    <span class="kwd">public</span> <span class="cls">String</span> Surname { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">LookupColumn</span>]
+    [<span class="cls">Display</span>(Name = <span class="str">"Age"</span>)]
+    <span class="kwd">public</span> <span class="cls">Int32</span> Age { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Birthday"</span>)]
+    [<span class="cls">LookupColumn</span>(Format = <span class="str">"{0:d}"</span>)]
+    <span class="kwd">public</span> <span class="cls">DateTime</span> Birthday { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    <span class="kwd">public</span> <span class="cls">Boolean</span>? IsWorking { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+}
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+<script>
+    $($('.mvc-lookup-input')[0]).mvclookup({
+        select: function (event, element, hiddenElement, data) {
+            $('#HiddenAutocompleteData').val(data['HiddenKey']);
+        }
+    });
+    $($('.mvc-lookup-input')[1]).mvclookup({
+        select: function (event, element, hiddenElement, data) {
+            $('#HiddenLookupData').val(data['HiddenKey']);
+        }
+    });
+</script>
+}
