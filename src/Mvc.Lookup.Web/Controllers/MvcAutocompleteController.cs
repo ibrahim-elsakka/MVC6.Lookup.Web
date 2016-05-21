@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NonFactors.Mvc.Lookup.Web.Lookups;
 using System;
 
@@ -13,7 +13,7 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
             return GetData(new PeopleAutocomplete(), filter);
         }
 
-        private JsonResult GetData(AbstractLookup lookup, LookupFilter filter)
+        private JsonResult GetData(MvcLookup lookup, LookupFilter filter)
         {
             lookup.CurrentFilter = filter;
 

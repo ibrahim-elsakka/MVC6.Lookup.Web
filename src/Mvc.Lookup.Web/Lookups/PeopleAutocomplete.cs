@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace NonFactors.Mvc.Lookup.Web.Lookups
 {
-    public class PeopleAutocomplete : GenericLookup<PersonModel>
+    public class PeopleAutocomplete : MvcLookup<PersonModel>
     {
         public PeopleAutocomplete()
         {
             DialogTitle = "People";
             DefaultRecordsPerPage = 5;
             DefaultSortColumn = "Surname";
-            LookupUrl = "/MvcAutocomplete/Default";
+            Url = "/MvcAutocomplete/Default";
             AdditionalFilters.Add("AutocompleteAge");
         }
 

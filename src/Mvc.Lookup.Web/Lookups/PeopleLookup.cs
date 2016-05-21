@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace NonFactors.Mvc.Lookup.Web.Lookups
 {
-    public class PeopleLookup : GenericLookup<PersonModel>
+    public class PeopleLookup : MvcLookup<PersonModel>
     {
         public PeopleLookup()
         {
             DialogTitle = "People";
             DefaultRecordsPerPage = 5;
+            Url = "/MvcLookup/Default";
             DefaultSortColumn = "Surname";
-            LookupUrl = "/MvcLookup/Default";
             AdditionalFilters.Add("LookupAge");
         }
 

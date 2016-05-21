@@ -130,7 +130,7 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
     <span class="kwd">return</span> GetData(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(), filter);
 }
 
-<span class="kwd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">AbstractLookup</span> lookup, <span class="cls">LookupFilter</span> filter)
+<span class="kwd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">MvcLookup</span> lookup, <span class="cls">LookupFilter</span> filter)
 {
     lookup.CurrentFilter = filter;
 
@@ -155,11 +155,11 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
                 <div class="widget-content">
 <pre>
 <code>
-<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">GenericLookup</span>&lt;<span class="cls">PersonModel</span>&gt;
+<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">PersonModel</span>&gt;
 {
     <span class="kwd">public</span> PeopleLookup()
     {
-        LookupUrl = <span class="str">"Default"</span>;
+        Url = <span class="str">"Default"</span>;
     }
 
     <span class="kwd">protected override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
