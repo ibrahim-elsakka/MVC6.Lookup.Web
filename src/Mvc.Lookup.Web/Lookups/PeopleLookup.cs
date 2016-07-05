@@ -10,24 +10,31 @@ namespace NonFactors.Mvc.Lookup.Web.Lookups
     {
         public PeopleLookup()
         {
-            DialogTitle = "People";
-            DefaultRecordsPerPage = 5;
+            Filter.Rows = 5;
+            Title = "People";
             Url = "/MvcLookup/Default";
-            DefaultSortColumn = "Surname";
+            Filter.SortColumn = "Surname";
             AdditionalFilters.Add("LookupAge");
         }
 
-        protected override IQueryable<PersonModel> GetModels()
+        public override IQueryable<PersonModel> GetModels()
         {
             return PeopleRepository.GetPeople();
         }
 
-        protected override void AddAdditionalData(Dictionary<String, String> row, PersonModel model)
+        public override void AddData(Dictionary<String, String> row, PersonModel model)
         {
-            row.Add("HiddenKey", "Hidden data for ID: " + model.Id);
+            base.AddData(row, model);
+            
+            if (model.IsWorking == true)
+                row.Add("IsWorking", "Person is employed");
+            else if (model.IsWorking == false)
+                row.Add("IsWorking", "Person is unemployed");
+            else
+                row.Add("IsWorking", "It's unknown is person is employed or not");
         }
 
-        protected override void AddAutocomplete(Dictionary<String, String> row, PersonModel model)
+        public override void AddAutocomplete(Dictionary<String, String> row, PersonModel model)
         {
             row.Add(AcKey, model.Name + " " + model.Surname);
         }

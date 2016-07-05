@@ -6,19 +6,19 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
     public class LookupController : Controller
     {
         [HttpGet]
+        public ViewResult Title()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult SourceUrl()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult DialogTitle()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ViewResult AdditionalData()
+        public ViewResult HiddenData()
         {
             return View();
         }
@@ -42,7 +42,7 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult DefaultRecordsPerPage()
+        public ViewResult DefaultRows()
         {
             return View();
         }

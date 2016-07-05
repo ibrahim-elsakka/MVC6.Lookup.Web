@@ -15,8 +15,6 @@
                     </span>
                 </div>
                 <div class="widget-content">
-                    @Html.AutoComplete("UserId", null, new PeopleAutocomplete())
-                    <br />
                     @Html.AutoCompleteFor(model => model.Id, new PeopleAutocomplete())
                 </div>
             </div>
@@ -33,8 +31,6 @@
                     </span>
                 </div>
                 <div class="widget-content">
-                    @Html.Lookup("UserId", null, new PeopleLookup())
-                    <br />
                     @Html.LookupFor(model => model.Id, new PeopleLookup())
                 </div>
             </div>
@@ -58,8 +54,6 @@
 <code>
 @@model <span class="cls">PersonModel</span>
 
-@@Html.Autocomplete(<span class="str">"UserId"</span>, <span class="kwd">null</span>, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-
 @@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
@@ -81,8 +75,6 @@
 <pre>
 <code>
 @@model <span class="cls">PersonModel</span>
-
-@@Html.Lookup(<span class="str">"UserId"</span>, <span class="kwd">null</span>, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
@@ -112,7 +104,8 @@
 {
     <span class="kwd">return</span> View();
 }
-
+        
+[<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
 {
     <span class="kwd">return</span> GetData(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(), filter);
@@ -120,7 +113,7 @@
 
 <span class="kwd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">MvcLookup</span> lookup, <span class="cls">LookupFilter</span> filter)
 {
-    lookup.CurrentFilter = filter;
+    lookup.Filter = filter;
 
     <span class="kwd">return</span> Json(lookup.GetData());
 }
@@ -153,12 +146,12 @@
         DontUseCssClasses = <span class="kwd">true</span>;
     }
 
-    <span class="kwd">protected override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
+    <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
     {
         <span class="kwd">return</span> <span class="cls">PeopleRepository</span>.GetPeople();
     }
 
-    <span class="kwd">protected override</span> <span class="cls">String</span> GetColumnCssClass(<span class="cls">PropertyInfo</span> property)
+    <span class="kwd">public override</span> <span class="cls">String</span> GetColumnCssClass(<span class="cls">PropertyInfo</span> property)
     {
         <span class="kwd">if</span> (DontUseCssClasses)
             <span class="kwd">return base</span>.GetColumnCssClass(property);
@@ -183,8 +176,8 @@
     [<span class="cls">Display</span>(Name = <span class="str">"Age"</span>)]
     <span class="kwd">public</span> <span class="cls">Int32</span> Age { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
-    [<span class="cls">Display</span>(Name = <span class="str">"Birthday"</span>)]
     [<span class="cls">LookupColumn</span>(Format = <span class="str">"{0:d}"</span>)]
+    [<span class="cls">Display</span>(Name = <span class="str">"Birthday"</span>, ShortName = <span class="str">"Birth"</span>)]
     <span class="kwd">public</span> <span class="cls">DateTime</span> Birthday { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
     <span class="kwd">public</span> <span class="cls">Boolean</span>? IsWorking { <span class="kwd">get</span>; <span class="kwd">set</span>; }

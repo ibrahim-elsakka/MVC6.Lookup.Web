@@ -5,6 +5,7 @@ namespace NonFactors.Mvc.Lookup.Web.Models
 {
     public class PersonModel
     {
+        [LookupColumn(Hidden = true)]
         public Int32 Id { get; set; }
 
         [LookupColumn]
@@ -19,8 +20,8 @@ namespace NonFactors.Mvc.Lookup.Web.Models
         [Display(Name = "Age")]
         public Int32 Age { get; set; }
 
-        [Display(Name = "Birthday")]
         [LookupColumn(Format = "{0:d}")]
+        [Display(Name = "Birthday", ShortName = "Birth")]
         public DateTime Birthday { get; set; }
 
         public Boolean? IsWorking { get; set; }

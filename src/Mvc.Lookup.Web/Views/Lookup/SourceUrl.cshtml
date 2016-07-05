@@ -104,7 +104,8 @@
 {
     <span class="kwd">return</span> View();
 }
-
+    
+[<span class="cls">HttpGet</span>]
 <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
 {
     <span class="kwd">return</span> GetData(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(), filter);
@@ -112,7 +113,7 @@
 
 <span class="kwd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">MvcLookup</span> lookup, <span class="cls">LookupFilter</span> filter)
 {
-    lookup.CurrentFilter = filter;
+    lookup.Filter = filter;
 
     <span class="kwd">return</span> Json(lookup.GetData());
 }
@@ -142,7 +143,7 @@
         Url = <span class="str">"Default"</span>;
     }
 
-    <span class="kwd">protected override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
+    <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
     {
         <span class="kwd">return</span> <span class="cls">PeopleRepository</span>.GetPeople();
     }
