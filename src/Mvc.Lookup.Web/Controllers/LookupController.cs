@@ -18,6 +18,12 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult Localization()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult HiddenData()
         {
             return View();
