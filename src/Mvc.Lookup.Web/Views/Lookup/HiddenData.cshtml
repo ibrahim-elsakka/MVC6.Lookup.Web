@@ -129,23 +129,26 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
                 <div class="widget-content">
 <pre>
 <code>
-[<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
+<span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
 {
-    <span class="kwd">return</span> View();
-}
+    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
+
+    <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
+    {    
+        Context = context;
+    }
+
+    [<span class="cls">HttpGet</span>]
+    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
+    {
+        <span class="kwd">return</span> View();
+    }
         
-[<span class="cls">HttpGet</span>]
-<span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
-{
-    <span class="kwd">return</span> GetData(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(), filter);
-}
-
-<span class="kwd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">MvcLookup</span> lookup, <span class="cls">LookupFilter</span> filter)
-{
-    lookup.Filter = filter;
-
-    <span class="kwd">return</span> Json(lookup.GetData());
+    [<span class="cls">HttpGet</span>]
+    <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
+    {
+        <span class="kwd">return</span> Json(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(Context) { Filter = filter }.GetData());
+    }
 }
 </code>
 </pre>
@@ -168,6 +171,12 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
 <code>
 <span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">PersonModel</span>&gt;
 {
+    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
+
+    <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
+    {
+        Context = context;
+    }
     <span class="kwd">public</span> PeopleLookup()
     {
         Url = <span class="str">"Default"</span>;
@@ -175,7 +184,7 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
     {
-        <span class="kwd">return</span> <span class="cls">PeopleRepository</span>.GetPeople();
+        <span class="kwd">return</span> Context.Set&lt;<span class="cls">PersonModel</span>&gt;();
     }
 
     <span class="kwd">public override void</span> AddData(<span class="cls">Dictionary</span>&lt;<span class="cls">String</span>, <span class="cls">String</span>&gt; row, <span class="cls">PersonModel</span> model)
