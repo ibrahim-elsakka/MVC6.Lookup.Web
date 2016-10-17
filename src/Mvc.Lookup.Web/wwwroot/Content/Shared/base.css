@@ -24,11 +24,6 @@ body {
     text-align: center;
 }
 
-    .logo img {
-        height: 80px;
-        width: 80px;
-    }
-
 .sidebar-search {
     position: relative;
 }
