@@ -1,6 +1,6 @@
 ﻿{
   "webroot": "wwwroot",
-  "version": "1.0.0",
+  "version": "1.1.0",
 
   "dependencies": {
     "NonFactors.Lookup.Mvc6": "1.1.0",
