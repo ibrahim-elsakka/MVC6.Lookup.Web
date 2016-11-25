@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.IO;
 
 namespace NonFactors.Mvc.Lookup.Web
