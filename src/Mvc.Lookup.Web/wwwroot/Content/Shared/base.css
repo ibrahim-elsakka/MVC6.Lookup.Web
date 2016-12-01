@@ -24,6 +24,15 @@ body {
     text-align: center;
 }
 
+.logo a {
+    margin-left: 3em;
+}
+
+.logo .version {
+    vertical-align: bottom;
+    color: #FFFFFF;
+}
+
 .sidebar-search {
     position: relative;
 }
