@@ -11,14 +11,14 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
     <environment names="Development">
-        <link href="~/Content/JQueryUI/jquery-ui.css" rel="stylesheet">
-        <link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="~/Content/FontAwesome/font-awesome.css" rel="stylesheet">
-        <link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet">
-        <link href="~/Content/Shared/base.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/Content/JQueryUI/jquery-ui.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/Content/FontAwesome/font-awesome.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/Content/Shared/base.css" rel="stylesheet">
     </environment>
     <environment names="Staging,Production">
-        <link href="~/content/page/bundle.min.css" rel="stylesheet">
+        <link asp-append-version="true" href="~/content/page/bundle.min.css" rel="stylesheet">
     </environment>
 </head>
 <body class="container-fluid">
@@ -96,14 +96,14 @@
     </div>
 
     <environment names="Development">
-        <script src="~/Scripts/JQuery/jquery.js"></script>
-        <script src="~/Scripts/Bootstrap/bootstrap.js"></script>
-        <script src="~/Scripts/JQueryUI/jquery-ui.js"></script>
-        <script src="~/Scripts/MvcLookup/mvc-lookup.js"></script>
-        <script src="~/Scripts/Shared/site.js"></script>
+        <script asp-append-version="true" src="~/Scripts/JQuery/jquery.js"></script>
+        <script asp-append-version="true" src="~/Scripts/Bootstrap/bootstrap.js"></script>
+        <script asp-append-version="true" src="~/Scripts/JQueryUI/jquery-ui.js"></script>
+        <script asp-append-version="true" src="~/Scripts/MvcLookup/mvc-lookup.js"></script>
+        <script asp-append-version="true" src="~/Scripts/Shared/site.js"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="~/scripts/page/bundle.min.js"></script>
+        <script asp-append-version="true" src="~/scripts/page/bundle.min.js"></script>
     </environment>
     @RenderSection("scripts", false)
 </body>
