@@ -63,7 +63,7 @@
 @@model <span class="cls">PersonModel</span>
 
 @@Html.TextBox(<span class="str">"HiddenId"</span>)
-        
+
 @@Html.TextBox(<span class="str">"AdditionalIsWorking"</span>)
 
 @@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
@@ -96,7 +96,7 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
 @@model <span class="cls">PersonModel</span>
 
 @@Html.TextBox(<span class="str">"HiddenId"</span>)
-        
+
 @@Html.TextBox(<span class="str">"AdditionalIsWorking"</span>)
 
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
@@ -134,7 +134,7 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
     <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
 
     <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
-    {    
+    {
         Context = context;
     }
 
@@ -143,7 +143,7 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
     {
         <span class="kwd">return</span> View();
     }
-        
+
     [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
     {

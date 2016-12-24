@@ -21,7 +21,7 @@ namespace NonFactors.Mvc.Lookup.Web.Lookups
         {
             return PeopleRepository.GetPeople();
         }
-        
+
         public override void AddAutocomplete(Dictionary<String, String> row, PersonModel model)
         {
             row.Add(AcKey, model.Name + " " + model.Surname);

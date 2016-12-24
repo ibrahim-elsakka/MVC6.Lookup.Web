@@ -112,7 +112,7 @@
     <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
 
     <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
-    {    
+    {
         Context = context;
     }
 
@@ -121,7 +121,7 @@
     {
         <span class="kwd">return</span> View();
     }
-        
+
     [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
     {
@@ -158,8 +158,8 @@
     <span class="kwd">public</span> PeopleLookup()
     {
         Url = <span class="str">"Default"</span>;
-        Title = <span class="str">"People"</span>;   
- 
+        Title = <span class="str">"People"</span>;
+
         Filter.Rows = 5;
         Filter.SortColumn = <span class="str">"Surname"</span>;
         Filter.SortOrder = <span class="cls">LookupSortOrder</span>.Asc;
