@@ -69,9 +69,9 @@
 @@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 
 $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
-    select: <span class="kwrd">function</span> (event, element, hiddenElement, data) {    
-        $(<span class="str">'#AdditionalIsWorking'</span>).val(data[<span class="str">'IsWorking'</span>]);
-        $(<span class="str">'#HiddenId'</span>).val(data[<span class="str">'Id'</span>]);    
+    select: <span class="kwd">function</span> (event, element, hiddenElement, data) {
+        $(<span class="str">'#AdditionalIsWorking'</span>).val(data ? data[<span class="str">'IsWorking'</span>] : <span class="str">''</span>);
+        $(<span class="str">'#HiddenId'</span>).val(data ? data[<span class="str">'Id'</span>] : <span class="str">''</span>);
     }
 });
 </code>
@@ -102,9 +102,9 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 
 $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
-    select: <span class="kwrd">function</span> (event, element, hiddenElement, data) {    
-        $(<span class="str">'#AdditionalIsWorking'</span>).val(data[<span class="str">'IsWorking'</span>]);
-        $(<span class="str">'#HiddenId'</span>).val(data[<span class="str">'Id'</span>]);  
+    select: <span class="kwd">function</span> (event, element, hiddenElement, data) {
+        $(<span class="str">'#AdditionalIsWorking'</span>).val(data ? data[<span class="str">'IsWorking'</span>] : <span class="str">''</span>);
+        $(<span class="str">'#HiddenId'</span>).val(data ? data[<span class="str">'Id'</span>] : <span class="str">''</span>);
     }
 });
 </code>
@@ -230,14 +230,14 @@ $(<span class="str">'.mvc-lookup-input'</span>).mvclookup({
 <script>
     $($('.mvc-lookup-input')[0]).mvclookup({
         select: function (event, element, hiddenElement, data) {
-            $('#AdditionalAutocompleteWorkingData').val(data['IsWorking']);
-            $('#HiddenAutocompleteId').val(data['Id']);
+            $('#AdditionalAutocompleteWorkingData').val(data ? data['IsWorking'] : '');
+            $('#HiddenAutocompleteId').val(data ? data['Id'] : '');
         }
     });
     $($('.mvc-lookup-input')[1]).mvclookup({
         select: function (event, element, hiddenElement, data) {
-            $('#AdditionalLookupWorkingData').val(data['IsWorking']);
-            $('#HiddenLookupId').val(data['Id']);
+            $('#AdditionalLookupWorkingData').val(data ? data['IsWorking'] : '');
+            $('#HiddenLookupId').val(data ? data['Id'] : '');
         }
     });
 </script>
