@@ -24,18 +24,18 @@ namespace NonFactors.Mvc.Lookup.Web.Lookups
 
         public override void AddAutocomplete(Dictionary<String, String> row, PersonModel model)
         {
-            row.Add(AcKey, model.Name + " " + model.Surname);
+            row[AcKey] = model.Name + " " + model.Surname;
         }
         public override void AddData(Dictionary<String, String> row, PersonModel model)
         {
             base.AddData(row, model);
 
             if (model.IsWorking == true)
-                row.Add("IsWorking", "Person is employed");
+                row["IsWorking"] = "Person is employed";
             else if (model.IsWorking == false)
-                row.Add("IsWorking", "Person is unemployed");
+                row["IsWorking"] = "Person is unemployed";
             else
-                row.Add("IsWorking", "It's unknown is person is employed or not");
+                row["IsWorking"] = "It's unknown is person is employed or not";
         }
     }
 }

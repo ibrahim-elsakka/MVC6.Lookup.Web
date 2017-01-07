@@ -8,7 +8,7 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
     {
         public JsonResult Default(LookupFilter filter, Int32? autocompleteAge)
         {
-            filter.AdditionalFilters.Add("Age", autocompleteAge);
+            filter.AdditionalFilters["Age"] = autocompleteAge;
 
             return Json(new PeopleAutocomplete() { Filter = filter }.GetData());
         }

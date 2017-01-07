@@ -125,7 +125,7 @@
     [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter, <span class="cls">Int32</span>? age)
     {
-        filter.AdditionalFilters.Add(<span class="str">"Age"</span>, age);
+        filter.AdditionalFilters[<span class="str">"Age"</span>] = age;
 
         <span class="kwd">return</span> Json(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(Context) { Filter = filter }.GetData());
     }

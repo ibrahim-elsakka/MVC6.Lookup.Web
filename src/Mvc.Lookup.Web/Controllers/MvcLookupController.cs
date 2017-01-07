@@ -8,7 +8,7 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
     {
         public JsonResult Default(LookupFilter filter, Int32? lookupAge)
         {
-            filter.AdditionalFilters.Add("Age", lookupAge);
+            filter.AdditionalFilters["Age"] = lookupAge;
 
             return Json(new PeopleLookup() { Filter = filter }.GetData());
         }
