@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NonFactors.Mvc.Lookup.Web.Lookups;
 using System;
+using System.Globalization;
+using System.Threading;
 
 namespace NonFactors.Mvc.Lookup.Web.Controllers
 {
@@ -30,25 +33,44 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult Multi()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult AdditionalFilters()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult DefaultSortOrder()
+        public ViewResult SortOptions()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult DefaultSortColumn()
+        public ViewResult ColumnPosition()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult DefaultRows()
+        public ViewResult ColumnHeader()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult PagingOptions()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ViewResult Id()
         {
             return View();
         }
@@ -57,6 +79,47 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         public ViewResult Autocomplete()
         {
             return View();
+        }
+
+
+        [HttpGet]
+        public ViewResult Configuration()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public JsonResult AllPeople(LookupFilter filter, Int32? autocompleteIncome, Int32? lookupIncome)
+        {
+            filter.AdditionalFilters["Income"] = autocompleteIncome ?? lookupIncome;
+
+            return Json(new PeopleLookup { Filter = filter }.GetData());
+        }
+
+        [HttpGet]
+        public JsonResult WorkingPeople(LookupFilter filter)
+        {
+            filter.AdditionalFilters["IsWorking"] = true;
+
+            return Json(new PeopleLookup { Filter = filter }.GetData());
+        }
+
+        [HttpGet]
+        public JsonResult LocalizedPeople(LookupFilter filter)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("de");
+            CultureInfo.CurrentUICulture = new CultureInfo("de");
+
+            return Json(new PeopleLookup { Filter = filter }.GetData());
+        }
+
+        [HttpGet]
+        public JsonResult AllPeopleWithIncome(LookupFilter filter, Int32? autocompleteIncome)
+        {
+            filter.AdditionalFilters["Income"] = autocompleteIncome;
+
+            return Json(new PeopleLookup { Filter = filter }.GetData());
         }
     }
 }

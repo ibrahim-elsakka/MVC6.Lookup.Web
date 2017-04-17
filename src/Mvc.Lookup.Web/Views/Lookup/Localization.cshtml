@@ -1,4 +1,4 @@
-﻿@model PersonModel
+﻿@model Person
 @{
     ViewBag.Title = "Lookup localization";
 }
@@ -9,13 +9,13 @@
             <div class="widget">
                 <div class="widget-header">
                     <i class="fa fa-bars"></i>
-                    Autocomplete
+                    Lookup
                     <span class="widget-buttons">
                         <i class="content-toggle"></i>
                     </span>
                 </div>
                 <div class="widget-content">
-                    @Html.AutoCompleteFor(model => model.Id, new PeopleAutocomplete())
+                    @Html.Lookup("Lookup", new PeopleLookup { Url = "LocalizedPeople", Title = "Personen" })
                 </div>
             </div>
         </div>
@@ -25,13 +25,13 @@
             <div class="widget">
                 <div class="widget-header">
                     <i class="fa fa-bars"></i>
-                    Autocomplete + Lookup
+                    Multi lookup
                     <span class="widget-buttons">
                         <i class="content-toggle"></i>
                     </span>
                 </div>
                 <div class="widget-content">
-                    @Html.LookupFor(model => model.Id, new PeopleLookup())
+                    @Html.Lookup("MultiLookup", new PeopleLookup { Url = "LocalizedPeople", Multi = true, Title = "Personen" })
                 </div>
             </div>
         </div>
@@ -52,30 +52,6 @@
                 <div class="widget-content">
 <pre>
 <code>
-@@model <span class="cls">PersonModel</span>
-
-@@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
-</pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-<pre>
-<code>
-@@model <span class="cls">PersonModel</span>
-
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
@@ -83,15 +59,12 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="row">
     <div class="col-md-6">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
                     <i class="fa fa-code"></i>
-                    Controller
+                    View
                     <span class="widget-buttons">
                         <i class="content-toggle"></i>
                     </span>
@@ -99,26 +72,52 @@
                 <div class="widget-content">
 <pre>
 <code>
-<span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
+@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span> { Multi = <span class="kwd">true</span> })
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    Person
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+<span class="kwd">public class</span> <span class="cls">Person</span>
 {
-    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
+    [<span class="cls">Key</span>]
+    <span class="kwd">public</span> <span class="cls">Int32</span> Id { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+    <span class="kwd">public</span> <span class="cls">Int32</span>[] Ids { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
-    <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
-    {
-        Context = context;
-    }
+    [<span class="cls">LookupColumn</span>]
+    [<span class="cls">Display</span>(Name = <span class="str">"Vorname"</span>)]
+    <span class="kwd">public</span> <span class="cls">String</span> Name { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
-    [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
-    {
-        <span class="kwd">return</span> View();
-    }
+    [<span class="cls">LookupColumn</span>]
+    [<span class="cls">Display</span>(Name = <span class="str">"Nachname"</span>)]
+    <span class="kwd">public</span> <span class="cls">String</span> Surname { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
-    [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">JsonResult</span> Default(<span class="cls">LookupFilter</span> filter)
-    {
-        <span class="kwd">return</span> Json(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(Context) { Filter = filter }.GetData());
-    }
+    [<span class="cls">LookupColumn</span>]
+    [<span class="cls">Display</span>(Name = <span class="str">"Einkommen"</span>)]
+    <span class="kwd">public</span> <span class="cls">Int32</span> Income { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    [<span class="cls">Display</span>(Name = <span class="str">"Geburtstag"</span>)]
+    [<span class="cls">LookupColumn</span>(Format = <span class="str">"{0:d}"</span>)]
+    <span class="kwd">public</span> <span class="cls">DateTime</span> Birthday { <span class="kwd">get</span>; <span class="kwd">set</span>; }
+
+    <span class="kwd">public</span> <span class="cls">Boolean</span>? IsWorking { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 }
 </code>
 </pre>
@@ -126,7 +125,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -139,7 +138,7 @@
                 <div class="widget-content">
 <pre>
 <code>
-<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">PersonModel</span>&gt;
+<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">Person</span>&gt;
 {
     <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
 
@@ -149,17 +148,13 @@
     }
     <span class="kwd">public</span> PeopleLookup()
     {
-        Url = <span class="str">"Default"</span>;
+        Url = <span class="str">"AllPeople"</span>;
+        Title = <span class="str">"Personen"</span>;
     }
 
-    <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">PersonModel</span>&gt; GetModels()
+    <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()
     {
-        <span class="kwd">return</span> Context.Set&lt;<span class="cls">PersonModel</span>&gt;();
-    }
-
-    <span class="kwd">public override void</span> AddAutocomplete(<span class="cls">Dictionary</span>&lt;<span class="cls">String</span>, <span class="cls">String</span>&gt; row, <span class="cls">PersonModel</span> model)
-    {
-        row.Add(AcKey, model.Name + <span class="str">" "</span> + model.Surname);
+        <span class="kwd">return</span> Context.Set&lt;<span class="cls">Person</span>&gt;();
     }
 }
 </code>
@@ -168,7 +163,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-4">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -185,6 +180,7 @@
     $.fn.mvclookup.lang = {
         error: <span class="str">'Fehler beim Abrufen von Aufzeichnungen'</span>,
         noData: <span class="str">'Keine Daten gefunden'</span>,
+        select: <span class="str">'Wählen ({0})'</span>,
         search: <span class="str">'Suche...'</span>
     };
 &lt;/script&gt;
@@ -200,6 +196,7 @@
     $.fn.mvclookup.lang = {
         error: 'Fehler beim Abrufen von Aufzeichnungen',
         noData: 'Keine Daten gefunden',
+        select: 'Wählen ({0})',
         search: 'Suche...'
     };
 </script>

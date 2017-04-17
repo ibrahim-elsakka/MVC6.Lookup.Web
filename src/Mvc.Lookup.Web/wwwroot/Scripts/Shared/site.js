@@ -37,4 +37,6 @@ $(document).ready(function () {
             }
         }
     });
+
+    $('.mvc-lookup-input').mvclookup();
 }());

@@ -3,16 +3,28 @@ using NonFactors.Mvc.Lookup.Web.Lookups;
 
 namespace NonFactors.Mvc.Lookup.Web.Controllers
 {
-    public class HomeController : Controller
+    public class JavascriptController : Controller
     {
         [HttpGet]
-        public ViewResult Index()
+        public ViewResult Reload()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Installation()
+        public ViewResult Select()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult Readonly()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult FilterChange()
         {
             return View();
         }

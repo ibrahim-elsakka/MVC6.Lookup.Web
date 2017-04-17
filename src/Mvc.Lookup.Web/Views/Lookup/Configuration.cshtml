@@ -1,10 +1,10 @@
 ﻿@model Person
 @{
-    ViewBag.Title = "Lookup dialog title";
+    ViewBag.Title = "Lookup configuration";
 }
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="example content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -15,12 +15,12 @@
                     </span>
                 </div>
                 <div class="widget-content">
-                    @Html.Lookup("Lookup", new PeopleLookup { Title = "People" })
+                    @Html.AutoComplete("Autocomplete", new PeopleLookup())
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="example content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -31,7 +31,23 @@
                     </span>
                 </div>
                 <div class="widget-content">
-                    @Html.Lookup("LookupSearch", new PeopleLookup { Title = "People search" })
+                    @Html.Lookup("Lookup", new PeopleLookup())
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="example content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-bars"></i>
+                    Multi lookup
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+                    @Html.Lookup("MultiLookup", new PeopleLookup() { Multi = true })
                 </div>
             </div>
         </div>
@@ -39,7 +55,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -52,14 +68,14 @@
                 <div class="widget-content">
 <pre>
 <code>
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span> { Title = <span class="str">"People"</span> })
+@@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
@@ -72,7 +88,27 @@
                 <div class="widget-content">
 <pre>
 <code>
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span> { Title = <span class="str">"People search"</span> })
+@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    View
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
                 </div>
@@ -82,12 +118,12 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
                     <i class="fa fa-code"></i>
-                    Controller
+                    Javascript
                     <span class="widget-buttons">
                         <i class="content-toggle"></i>
                     </span>
@@ -95,64 +131,31 @@
                 <div class="widget-content">
 <pre>
 <code>
-<span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
-{
-    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
-
-    <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
-    {
-        Context = context;
+$(<span class="str">'.mvc-lookup'</span>).mvclookup({
+    readonly: <span class="kwd">false</span>, <span class="com">// Lookup readonly state</span>
+    events: {
+        select: <span class="kwd">function</span> (e, data, triggerChanges) {
+            <span class="com">// e - lookup select event, preventing the default, prevents default lookup selection logic</span>
+            <span class="com">// data - an array of selected data</span>
+            <span class="com">// triggerChanges - a boolean specifying if input changes should be triggered</span>
+        },
+        filterChange: <span class="kwd">function</span> (e) {
+            <span class="com">// e - input event which triggered the change, preventing the default, prevents default lookup filter change logic</span>
+        }
+    },
+    autocomplete: {
+        <span class="com">// JQuery UI autocomplete options</span>
+    },
+    dialog: {
+        <span class="com">// JQuery UI dialog options</span>
+    },
+    spinner: {
+        <span class="com">// JQuery UI spinner options</span>
+    },
+    resizable: {
+        <span class="com">// JQuery UI resizable options</span>
     }
-
-    [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
-    {
-        <span class="kwd">return</span> View();
-    }
-
-    [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">JsonResult</span> AllPeople(<span class="cls">LookupFilter</span> filter)
-    {
-        <span class="kwd">return</span> Json(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(Context) { Filter = filter }.GetData());
-    }
-}
-</code>
-</pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    PeopleLookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-<pre>
-<code>
-<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">Person</span>&gt;
-{
-    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
-
-    <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
-    {
-        Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
-    }
-
-    <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()
-    {
-        <span class="kwd">return</span> Context.Set&lt;<span class="cls">Person</span>&gt;();
-    }
-}
+});
 </code>
 </pre>
                 </div>

@@ -6,23 +6,27 @@ using System.Linq;
 
 namespace NonFactors.Mvc.Lookup.Web.Lookups
 {
-    public class PeopleLookup : MvcLookup<PersonModel>
+    public class PeopleLookup : MvcLookup<Person>
     {
         public PeopleLookup()
         {
             Filter.Rows = 5;
             Title = "People";
-            Url = "/MvcLookup/Default";
-            Filter.SortColumn = "Surname";
-            AdditionalFilters.Add("LookupAge");
+            Url = "AllPeople";
+            Filter.Sort = "Income";
+            Filter.Order = LookupSortOrder.Desc;
         }
 
-        public override IQueryable<PersonModel> GetModels()
+        public override IQueryable<Person> GetModels()
         {
-            return PeopleRepository.GetPeople();
+            return PeopleRepository.Get();
         }
 
-        public override void AddData(Dictionary<String, String> row, PersonModel model)
+        public override void AddAutocomplete(Dictionary<String, String> row, Person model)
+        {
+            row[AcKey] = model.Name + " " + model.Surname;
+        }
+        public override void AddData(Dictionary<String, String> row, Person model)
         {
             base.AddData(row, model);
 
@@ -32,11 +36,6 @@ namespace NonFactors.Mvc.Lookup.Web.Lookups
                 row["IsWorking"] = "Person is unemployed";
             else
                 row["IsWorking"] = "It's unknown is person is employed or not";
-        }
-
-        public override void AddAutocomplete(Dictionary<String, String> row, PersonModel model)
-        {
-            row[AcKey] = model.Name + " " + model.Surname;
         }
     }
 }

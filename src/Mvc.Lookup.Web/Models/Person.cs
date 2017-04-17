@@ -1,27 +1,28 @@
-﻿using System;
+﻿using Mvc.Lookup.Web.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace NonFactors.Mvc.Lookup.Web.Models
 {
-    public class PersonModel
+    public class Person
     {
         [LookupColumn(Hidden = true)]
         public Int32 Id { get; set; }
 
         [LookupColumn]
-        [Display(Name = "Name")]
+        [Display(ResourceType = typeof(Resources), Name = "Name")]
         public String Name { get; set; }
 
         [LookupColumn]
-        [Display(Name = "Surname")]
+        [Display(ResourceType = typeof(Resources), Name = "Surname")]
         public String Surname { get; set; }
 
         [LookupColumn]
-        [Display(Name = "Age")]
-        public Int32 Age { get; set; }
+        [Display(ResourceType = typeof(Resources), Name = "Income")]
+        public Int32? Income { get; set; }
 
         [LookupColumn(Format = "{0:d}")]
-        [Display(Name = "Birthday", ShortName = "Birth")]
+        [Display(ResourceType = typeof(Resources), Name = "Birthday")]
         public DateTime Birthday { get; set; }
 
         public Boolean? IsWorking { get; set; }

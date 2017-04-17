@@ -59,33 +59,65 @@
                         @Html.ActionLink("Lookup hidden data", "HiddenData", "Lookup")
                     </li>
                     <li>
+                        @Html.ActionLink("Lookup multi selection", "Multi", "Lookup")
+                    </li>
+                    <li>
                         @Html.ActionLink("Lookup additional filters", "AdditionalFilters", "Lookup")
                     </li>
                     <li>
-                        @Html.ActionLink("Lookup default sort order", "DefaultSortOrder", "Lookup")
+                        @Html.ActionLink("Lookup initial sort options", "SortOptions", "Lookup")
                     </li>
                     <li>
-                        @Html.ActionLink("Lookup default sort column", "DefaultSortColumn", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup default rows per page", "DefaultRows", "Lookup")
+                        @Html.ActionLink("Lookup initial paging options", "PagingOptions", "Lookup")
                     </li>
                 </ul>
             </div>
             <div class="sidebar content-block">
                 <ul>
                     <li>
-                        @Html.ActionLink("Lookup column header", "Header", "Column")
+                        @Html.ActionLink("Lookup id value", "Id", "Lookup")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Lookup autocomplete value", "Autocomplete", "Lookup")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Lookup column key", "Key", "Column")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Lookup column position", "Position", "Column")
                     </li>
                     <li>
                         @Html.ActionLink("Lookup column css class", "CssClass", "Column")
                     </li>
+                    <li>
+                        @Html.ActionLink("Lookup column header title", "Header", "Column")
+                    </li>
                 </ul>
             </div>
             <div class="sidebar content-block">
                 <ul>
                     <li>
-                        @Html.ActionLink("Custom autocomplete value", "Autocomplete", "Lookup")
+                        @Html.ActionLink("Lookup reload", "Reload", "Javascript")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Lookup readonly", "Readonly", "Javascript")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Binding select event", "Select", "Javascript")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Binding filter change event", "FilterChange", "Javascript")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Lookup configuration", "Configuration", "Lookup")
                     </li>
                 </ul>
             </div>
