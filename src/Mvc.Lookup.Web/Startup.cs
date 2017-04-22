@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 
 namespace NonFactors.Mvc.Lookup.Web
 {
@@ -14,7 +15,13 @@ namespace NonFactors.Mvc.Lookup.Web
         {
             app.UseDeveloperExceptionPage();
             app.UseMvcWithDefaultRoute();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = (response) =>
+                {
+                    response.Context.Response.Headers[HeaderNames.CacheControl] = "public,max-age=2592000";
+                }
+            });
         }
     }
 }
