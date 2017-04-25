@@ -15,7 +15,7 @@
                     </span>
                 </div>
                 <div class="widget-content text-center">
-                    @Html.AutoComplete("Autocomplete", new PeopleLookup() { ReadOnly = true })
+                    @Html.AutoComplete("Autocomplete", new PeopleLookup() { ReadOnly = true }, 1)
                     <br />
                     <button id="AutocompleteButton" class="btn btn-default">Toggle read only state</button>
                 </div>
@@ -33,7 +33,7 @@
                     </span>
                 </div>
                 <div class="widget-content text-center">
-                    @Html.Lookup("Lookup", new PeopleLookup())
+                    @Html.Lookup("Lookup", new PeopleLookup(), 5)
                     <br />
                     <button id="LookupButton" class="btn btn-default">Toggle read only state</button>
                 </div>
