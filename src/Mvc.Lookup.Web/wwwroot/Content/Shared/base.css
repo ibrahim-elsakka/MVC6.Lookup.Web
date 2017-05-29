@@ -12,7 +12,7 @@ body {
 }
 
 .content {
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 .content-block {
@@ -24,14 +24,14 @@ body {
     text-align: center;
 }
 
-.logo a {
-    margin-left: 3em;
-}
+    .logo a {
+        margin-left: 3em;
+    }
 
-.logo .version {
-    vertical-align: bottom;
-    color: #FFFFFF;
-}
+    .logo .version {
+        vertical-align: bottom;
+        color: #FFFFFF;
+    }
 
 .sidebar-search {
     position: relative;
@@ -107,13 +107,18 @@ body {
 }
 
 .centered-content {
-    text-align:center;
+    text-align: center;
     min-width: 100%;
 }
 
-.docs .widget-header {
-    background: rgba(54, 52, 52, 0.67);
+.docs,
+.example {
+    margin-top: 20px;
 }
+
+    .docs .widget-header {
+        background: rgba(54, 52, 52, 0.67);
+    }
 
 .output .widget-header {
     background: rgba(145, 203, 222, 0.85);
