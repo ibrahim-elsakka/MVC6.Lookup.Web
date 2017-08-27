@@ -1,6 +1,5 @@
 ﻿using NonFactors.Mvc.Lookup.Web.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace NonFactors.Mvc.Lookup.Web.Context
@@ -21,7 +20,7 @@ namespace NonFactors.Mvc.Lookup.Web.Context
 
                     Birthday = new DateTime(1998, 09, 05),
                     IsWorking = false,
-                    Income = 0
+                    Income = null
                 },
                 new Person
                 {
@@ -97,7 +96,7 @@ namespace NonFactors.Mvc.Lookup.Web.Context
 
                     Birthday = new DateTime(1977, 09, 10),
                     IsWorking = false,
-                    Income = 0
+                    Income = null
                 },
                 new Person
                 {
