@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Version>2.2.1</Version>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <TargetFrameworks>netcoreapp1.1;net46</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
