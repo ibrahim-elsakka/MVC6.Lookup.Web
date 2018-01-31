@@ -103,7 +103,7 @@ body {
         }
 
 .widget-content {
-    padding: 15px;
+    padding: 10px;
 }
 
 .centered-content {
@@ -136,8 +136,13 @@ body {
         background: rgba(94, 186, 103, 0.75);
     }
 
+p {
+    margin: 10px 0;
+}
+
 pre {
     background: #FFFFFF;
+    margin: 0;
 }
 
     pre code .com {

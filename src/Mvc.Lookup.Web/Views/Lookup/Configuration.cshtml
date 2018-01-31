@@ -133,6 +133,7 @@
 <code>
 $(<span class="str">'.mvc-lookup'</span>).mvclookup({
     readonly: <span class="kwd">false</span>, <span class="com">// Lookup readonly state</span>
+    preserveSearch: <span class="kwd">true</span>, <span class="com">// Indicates if lookup dialog search value should be preserved if lookup dialog is closed</span>
     events: {
         select: <span class="kwd">function</span> (e, data, triggerChanges) {
             <span class="com">// e - lookup select event, preventing the default, prevents default lookup selection logic</span>
