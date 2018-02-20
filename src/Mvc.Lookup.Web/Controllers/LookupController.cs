@@ -83,13 +83,6 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
 
 
         [HttpGet]
-        public ViewResult Configuration()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
         public JsonResult AllPeople(LookupFilter filter, Int32? autocompleteIncome, Int32? lookupIncome)
         {
             filter.AdditionalFilters["Income"] = autocompleteIncome ?? lookupIncome;

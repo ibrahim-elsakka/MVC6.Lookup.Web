@@ -1,6 +1,6 @@
 ﻿@model Person
 @{
-    ViewBag.Title = "Lookup configuration";
+    ViewBag.Title = "Lookup javascript API";
 }
 
 <div class="row">
@@ -118,12 +118,12 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="example-code content-block">
             <div class="widget">
                 <div class="widget-header">
                     <i class="fa fa-code"></i>
-                    Javascript
+                    Javascript configuration
                     <span class="widget-buttons">
                         <i class="content-toggle"></i>
                     </span>
@@ -133,15 +133,15 @@
 <code>
 $(<span class="str">'.mvc-lookup'</span>).mvclookup({
     readonly: <span class="kwd">false</span>, <span class="com">// Lookup readonly state</span>
-    preserveSearch: <span class="kwd">true</span>, <span class="com">// Indicates if lookup dialog search value should be preserved if lookup dialog is closed</span>
+    preserveSearch: <span class="kwd">true</span>, <span class="com">// Indicates if dialog search value should be preserved after close</span>
     events: {
         select: <span class="kwd">function</span> (e, data, triggerChanges) {
-            <span class="com">// e - lookup select event, preventing the default, prevents default lookup selection logic</span>
+            <span class="com">// e - event, preventing the default, prevents default lookup selection logic</span>
             <span class="com">// data - an array of selected data</span>
             <span class="com">// triggerChanges - a boolean specifying if input changes should be triggered</span>
         },
         filterChange: <span class="kwd">function</span> (e) {
-            <span class="com">// e - input event which triggered the change, preventing the default, prevents default lookup filter change logic</span>
+            <span class="com">// e -  event, preventing the default, prevents default lookup filter change logic</span>
         }
     },
     autocomplete: {
@@ -157,6 +157,33 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
         <span class="com">// JQuery UI resizable options</span>
     }
 });
+</code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="example-code content-block">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-code"></i>
+                    Javascript methods
+                    <span class="widget-buttons">
+                        <i class="content-toggle"></i>
+                    </span>
+                </div>
+                <div class="widget-content">
+<pre>
+<code>
+<span class="com">// Returns lookup's javascript instance</span>
+$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'instance'</span>);
+
+<span class="com">// Reloads the lookup</span>
+$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'reload'</span>);
+
+<span class="com">// Opens lookup's dialog browser</span>
+$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'browse'</span>);
 </code>
 </pre>
                 </div>
