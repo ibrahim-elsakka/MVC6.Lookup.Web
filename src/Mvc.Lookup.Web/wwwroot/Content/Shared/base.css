@@ -1,23 +1,9 @@
-﻿* {
-    text-decoration: none !important;
-    outline: none !important;
-}
-
-body {
+﻿body {
     background: url(../../Images/background.jpg);
     font-family: 'Open Sans', sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0 30px 30px;
-}
-
-.content {
-    padding-top: 10px;
-}
-
-.content-block {
-    background: rgba(255, 255, 255, 0.8);
-    color: #666666;
+    font-size: 14px;
 }
 
 .logo {
@@ -39,136 +25,130 @@ body {
     }
 
 .sidebar-search {
-    position: relative;
+    background: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    border-style: none;
+    text-align: center;
+    color: #000000;
+    padding: 7px;
+    width: 100%;
 }
 
-    .sidebar-search input {
-        background: rgba(255, 255, 255, 0.2);
-        border-style: none;
-        text-align: center;
-        color: #000000;
-        padding: 7px;
-        width: 100%;
-    }
-
-.sidebar {
-    margin: 20px 0;
+.sidebar ul {
+    background: rgba(255, 255, 255, 0.93);
+    font-weight: bold;
+    list-style: none;
+    padding: 0;
 }
 
-    .sidebar ul {
-        font-weight: bold;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .sidebar ul a {
+        padding: 5px 12px;
+        color: #777777;
+        display: block;
     }
 
-        .sidebar ul a {
-            padding: 5px 12px;
-            color: #777777;
-            display: block;
+        .sidebar ul a:hover,
+        .sidebar ul a:focus {
+            background: #FFFFFF;
+            color: #448FBA;
         }
 
-            .sidebar ul a:hover {
-                background: rgba(255, 255, 255, 0.9);
-                color: #448FBA;
-            }
+.sidebar li + li {
+    border-top: 1px solid #B8B8B8;
+}
 
-    .sidebar li + li {
-        border-top: 1px solid #B8B8B8;
-    }
+.widget {
+    margin-top: 20px;
+}
 
 .widget-header {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    align-items: center;
+    padding: 8px 12px;
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: 16px;
+    display: flex;
 }
+
+    .widget-header > span {
+        padding-left: 10px;
+        flex: 1;
+    }
 
 .widget-buttons {
-    float: right;
+    cursor: pointer;
+    padding: 0 5px;
 }
 
-    .widget-buttons i {
-        display: inline-block;
-        cursor: pointer;
-        padding: 0 5px;
+    .widget-buttons span {
+        padding-left: 10px;
     }
 
-        .widget-buttons i:hover {
-            color: #DDDDDD;
-        }
-
-    .widget-buttons .content-toggle {
-        font-family: 'FontAwesome';
-        font-style: normal;
+    .widget-buttons:hover {
+        color: #DDDDDD;
     }
-
-        .widget-buttons .content-toggle:before {
-            content: "\f078";
-        }
-
-        .widget-buttons .content-toggle.open:before {
-            content: "\f077";
-        }
 
 .widget-content {
+    background: rgba(255, 255, 255, 0.93);
     padding: 10px;
 }
 
-.centered-content {
-    text-align: center;
-    min-width: 100%;
+.docs pre {
+    padding: 7px 10px;
 }
 
-.docs,
-.example {
-    margin-top: 20px;
+.docs .row {
+    margin-bottom: 10px;
 }
 
-    .docs .widget-header {
-        background: rgba(54, 52, 52, 0.67);
-    }
-
-.output .widget-header {
-    background: rgba(145, 203, 222, 0.85);
+.docs .widget-header {
+    background: #62BD6B;
 }
 
 .example .widget-header {
-    background: rgba(64, 145, 215, 0.69);
+    background: #8C86D7;
 }
 
-.example-code {
-    margin-top: 20px;
+.example .widget-content {
+    background: #FFFFFF;
 }
 
-    .example-code .widget-header {
-        background: rgba(94, 186, 103, 0.75);
-    }
+.code .widget-header {
+    background: #479AE2;
+}
 
 p {
     margin: 10px 0;
 }
 
 pre {
+    border: 1px solid #E2E2E2;
     background: #FFFFFF;
+    padding: 0 15px;
     margin: 0;
 }
 
-    pre code .com {
-        color: #118411;
+    pre .com {
+        font-weight: bold;
+        color: #15A915;
     }
 
-    pre code .cls {
+    pre .cls {
         color: #2AADBA;
     }
 
-    pre code .kwd {
+    pre .kwd {
         color: #084DFF;
     }
 
-    pre code .str {
+    pre .str {
         color: #CC6500;
     }
+
+.mvc-lookup-focus .mvc-lookup-control {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #80bdff;
+}
 
 .mvc-lookup-dialog thead > tr > th {
     vertical-align: middle;

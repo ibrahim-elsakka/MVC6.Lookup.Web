@@ -4,131 +4,105 @@
 }
 
 <div class="row">
-    <div class="col-md-12 col-lg-4">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Autocomplete
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    @Html.AutoComplete("Autocomplete", new PeopleLookup())
-                </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Autocomplete</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
         </div>
-    </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Lookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    @Html.Lookup("Lookup", new PeopleLookup())
-                </div>
-            </div>
+        <div class="widget-content">
+            @Html.AutoComplete("Autocomplete", new PeopleLookup())
         </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Multi lookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    @Html.Lookup("MultiLookup", new PeopleLookup() { Multi = true })
-                </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Lookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
+        </div>
+        <div class="widget-content">
+            @Html.Lookup("Lookup", new PeopleLookup())
+        </div>
+    </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Multi lookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
+            @Html.Lookup("MultiLookup", new PeopleLookup() { Multi = true })
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-<pre>
-<code>
-@@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
-</pre>
-                </div>
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
         </div>
+        <div class="widget-content">
+<pre>
+<code>
+@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
+</code>
+</pre>
+        </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 @@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Javascript configuration
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Javascript configuration</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 $(<span class="str">'.mvc-lookup'</span>).mvclookup({
@@ -159,21 +133,17 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
 });
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Javascript methods
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Javascript methods</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 <span class="com">// Returns lookup's javascript instance</span>
@@ -182,12 +152,16 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'instance'
 <span class="com">// Reloads the lookup</span>
 $(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'reload'</span>);
 
+<span class="com">// Loads and selects first row</span>
+$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'selectFirst'</span>);
+
+<span class="com">// Loads and selects a single row, only if it's one</span>
+$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'selectSingle'</span>);
+
 <span class="com">// Opens lookup's dialog browser</span>
 $(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'browse'</span>);
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>

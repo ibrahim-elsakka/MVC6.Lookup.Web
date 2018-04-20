@@ -1,6 +1,6 @@
 ﻿@model Person
 @{
-    ViewBag.Title = "Lookup browse";
+    ViewBag.Title = "Lookup select first";
 }
 
 <div class="row">
@@ -15,7 +15,7 @@
         <div class="widget-content text-center">
             @Html.AutoComplete("Autocomplete", new PeopleLookup())
             <br />
-            <button id="AutocompleteButton" class="btn btn-secondary">Browse</button>
+            <button id="AutocompleteButton" class="btn btn-secondary">Select first person</button>
         </div>
     </div>
     <div class="widget example col">
@@ -29,7 +29,7 @@
         <div class="widget-content text-center">
             @Html.Lookup("Lookup", new PeopleLookup())
             <br />
-            <button id="LookupButton" class="btn btn-secondary">Browse</button>
+            <button id="LookupButton" class="btn btn-secondary">Select first person</button>
         </div>
     </div>
 </div>
@@ -82,7 +82,9 @@
 <pre>
 <code>
 $(<span class="str">'button'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span>() {
-    $(<span class="str">'#Id'</span>).mvclookup(<span class="str">'browse'</span>);
+    <span class="kwd">var</span> triggerChanges = <span class="kwd">true</span>;
+
+    $(<span class="str">'#Id'</span>).mvclookup(<span class="str">'selectFirst'</span>, triggerChanges);
 });
 </code>
 </pre>
@@ -93,11 +95,11 @@ $(<span class="str">'button'</span>).on(<span class="str">'click'</span>, <span 
 @section scripts {
     <script>
         $('#AutocompleteButton').on('click', function () {
-            $('#Autocomplete').mvclookup('browse');
+            $('#Autocomplete').mvclookup('selectFirst');
         });
 
         $('#LookupButton').on('click', function () {
-            $('#Lookup').mvclookup('browse');
+            $('#Lookup').mvclookup('selectFirst');
         });
     </script>
 }

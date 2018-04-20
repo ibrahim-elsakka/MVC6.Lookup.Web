@@ -36,6 +36,18 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult SelectFirst()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult SelectSingle()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult FilterChange()
         {
             return View();

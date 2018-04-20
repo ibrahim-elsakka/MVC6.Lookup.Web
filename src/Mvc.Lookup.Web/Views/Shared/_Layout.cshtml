@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="shortcut icon" href="javascript:void" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="datalist,lookup,ajax,mvc,core" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Lookup controls for ASP.NET MVC projects.">
     <title>@ViewBag.Title</title>
@@ -24,7 +25,7 @@
 <body class="container-fluid">
     @Html.Partial("MvcLookup/_Dialog")
     <div class="row">
-        <div class="col-md-2">
+        <div class="sidebar col-lg-2">
             <div class="logo">
                 <a href="https://github.com/NonFactors/MVC6.Lookup">
                     <span class="fa fa-github">
@@ -32,108 +33,101 @@
                     </span>
                 </a>
             </div>
-            <div class="sidebar-search content-block">
-                @Html.TextBox("SearchInput", null, new { placeholder = "Search..." })
-            </div>
-            <div class="sidebar content-block">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Quick start", "Index", "Home")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Installation", "Installation", "Home")
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebar content-block">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Lookup source url", "SourceUrl", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup dialog title", "Title", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup localization", "Localization", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup hidden data", "HiddenData", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup multi selection", "Multi", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup additional filters", "AdditionalFilters", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup initial sort options", "SortOptions", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup initial paging options", "PagingOptions", "Lookup")
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebar content-block">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Lookup id value", "Id", "Lookup")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup autocomplete value", "Autocomplete", "Lookup")
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebar content-block">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Lookup column key", "Key", "Column")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup column position", "Position", "Column")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup column css class", "CssClass", "Column")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup column header title", "Header", "Column")
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebar content-block">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Lookup reload", "Reload", "Javascript")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup browse", "Browse", "Javascript")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lookup readonly", "Readonly", "Javascript")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Binding select event", "Select", "Javascript")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Binding filter change event", "FilterChange", "Javascript")
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebar content-block">
-                <ul>
-                    <li>
-                        @Html.ActionLink("Lookup javascript API", "Api", "Javascript")
-                    </li>
-                </ul>
-            </div>
+            <input id="SearchInput" class="sidebar-search" placeholder="Search...">
+            <ul>
+                <li>
+                    @Html.ActionLink("Quick start", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Installation", "Installation", "Home")
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.ActionLink("Lookup source url", "SourceUrl", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup dialog title", "Title", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup localization", "Localization", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup hidden data", "HiddenData", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup multi selection", "Multi", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup additional filters", "AdditionalFilters", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup initial sort options", "SortOptions", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup initial paging options", "PagingOptions", "Lookup")
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.ActionLink("Lookup id value", "Id", "Lookup")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup autocomplete value", "Autocomplete", "Lookup")
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.ActionLink("Lookup column key", "Key", "Column")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup column position", "Position", "Column")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup column css class", "CssClass", "Column")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup column header title", "Header", "Column")
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.ActionLink("Lookup reload", "Reload", "Javascript")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup browse", "Browse", "Javascript")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup readonly", "Readonly", "Javascript")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup loading first row", "SelectFirst", "Javascript")
+                </li>
+                <li>
+                    @Html.ActionLink("Lookup loading single row", "SelectSingle", "Javascript")
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.ActionLink("Binding select event", "Select", "Javascript")
+                </li>
+                <li>
+                    @Html.ActionLink("Binding filter change event", "FilterChange", "Javascript")
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.ActionLink("Lookup javascript API", "Api", "Javascript")
+                </li>
+            </ul>
         </div>
-        <div class="col-md-10 content">
+        <div class="col">
             @RenderBody()
         </div>
     </div>
 
     <environment names="Development">
         <script src="~/Scripts/JQuery/jquery.js"></script>
-        <script src="~/Scripts/Bootstrap/bootstrap.js"></script>
         <script src="~/Scripts/JQueryUI/jquery-ui.js"></script>
 
         <script src="~/Scripts/MvcLookup/mvc-lookup.js"></script>

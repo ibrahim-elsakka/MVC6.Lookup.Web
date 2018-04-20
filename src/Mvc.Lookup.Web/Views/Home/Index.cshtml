@@ -4,131 +4,105 @@
 }
 
 <div class="row">
-    <div class="col-md-12 col-lg-4">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Autocomplete
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    @Html.AutoComplete("Autocomplete", new PeopleLookup { Url = "/Home/AllPeople" }, 2)
-                </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Autocomplete</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
         </div>
-    </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Lookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    @Html.Lookup("Lookup", new PeopleLookup { Url = "/Home/AllPeople" }, 2)
-                </div>
-            </div>
+        <div class="widget-content">
+            @Html.AutoComplete("Autocomplete", new PeopleLookup { Url = "/Home/AllPeople" }, 2)
         </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Multi lookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    @Html.Lookup("MultiLookup", new PeopleLookup { Url = "/Home/AllPeople", Multi = true }, new[] { 1, 3 })
-                </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Lookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
+        </div>
+        <div class="widget-content">
+            @Html.Lookup("Lookup", new PeopleLookup { Url = "/Home/AllPeople" }, 2)
+        </div>
+    </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Multi lookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
+            @Html.Lookup("MultiLookup", new PeopleLookup { Url = "/Home/AllPeople", Multi = true }, new[] { 1, 3 })
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-<pre>
-<code>
-@@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
-</pre>
-                </div>
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
         </div>
+        <div class="widget-content">
+<pre>
+<code>
+@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
+</code>
+</pre>
+        </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 @@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>(<span class="kwd">true</span>))
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Controller
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Controller</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 <span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
@@ -157,21 +131,17 @@
 }
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    PeopleLookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>PeopleLookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 <span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">Person</span>&gt;
@@ -200,21 +170,17 @@
 }
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-4">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Person
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Person</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 <span class="kwd">public class</span> <span class="cls">Person</span>
@@ -243,8 +209,6 @@
 }
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>

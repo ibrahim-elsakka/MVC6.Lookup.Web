@@ -4,96 +4,82 @@
 }
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Autocomplete
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
-                    <div class="row">
-                        <div class="col-md-4">
-                            @Html.TextBox("AutocompleteId", null, new { @class = "form-control centered-content", placeholder = "Person ID" })
-                        </div>
-                        <div class="col-md-8">
-                            @Html.TextBox("AutocompleteWorking", null, new { @class = "form-control centered-content", placeholder = "Employment status" })
-                        </div>
-                    </div>
-
-                    <br />
-
-                    @Html.AutoComplete("Autocomplete", new PeopleLookup())
-                </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Autocomplete</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="example content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-bars"></i>
-                    Lookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
+        <div class="widget-content">
+            <div class="row">
+                <div class="col">
+                    @Html.TextBox("AutocompleteId", null, new { @class = "form-control text-center", placeholder = "Person ID" })
                 </div>
-                <div class="widget-content">
-                    <div class="row">
-                        <div class="col-md-4">
-                            @Html.TextBox("LookupId", null, new { @class = "form-control centered-content", placeholder = "Person ID" })
-                        </div>
-                        <div class="col-md-8">
-                            @Html.TextBox("LookupWorking", null, new { @class = "form-control centered-content", placeholder = "Employment status" })
-                        </div>
-                    </div>
-
-                    <br />
-
-                    @Html.Lookup("Lookup", new PeopleLookup())
+                <div class="col">
+                    @Html.TextBox("AutocompleteWorking", null, new { @class = "form-control text-center", placeholder = "Employment status" })
                 </div>
             </div>
+
+            <br />
+
+            @Html.AutoComplete("Autocomplete", new PeopleLookup())
+        </div>
+    </div>
+    <div class="widget example col">
+        <div class="widget-header">
+            <div class="fa fa-bars"></div>
+            <span>Lookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="row">
+                <div class="col">
+                    @Html.TextBox("LookupId", null, new { @class = "form-control text-center", placeholder = "Person ID" })
+                </div>
+                <div class="col">
+                    @Html.TextBox("LookupWorking", null, new { @class = "form-control text-center", placeholder = "Employment status" })
+                </div>
+            </div>
+
+            <br />
+
+            @Html.Lookup("Lookup", new PeopleLookup())
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 @@Html.TextBox(<span class="str">"PersonId"</span>)
 @@Html.TextBox(<span class="str">"PersonIsWorking"</span>)
-@@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
+@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    View
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 @@Html.TextBox(<span class="str">"PersonId"</span>)
@@ -101,24 +87,20 @@
 @@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Javascript
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Javascript</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 $(<span class="str">'.mvc-lookup'</span>).mvclookup({
@@ -136,21 +118,20 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
 });
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    PeopleLookup
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+</div>
+
+<div class="row">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>PeopleLookup</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 <span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">Person</span>&gt;
@@ -180,21 +161,17 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
 }
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="example-code content-block">
-            <div class="widget">
-                <div class="widget-header">
-                    <i class="fa fa-code"></i>
-                    Person
-                    <span class="widget-buttons">
-                        <i class="content-toggle"></i>
-                    </span>
-                </div>
-                <div class="widget-content">
+    <div class="widget code col">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>Person</span>
+            <div class="widget-buttons">
+                <span class="fa fa-minus content-toggle"></span>
+            </div>
+        </div>
+        <div class="widget-content">
 <pre>
 <code>
 <span class="kwd">public class</span> <span class="cls">Person</span>
@@ -222,29 +199,27 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
 }
 </code>
 </pre>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 @section scripts {
-<script>
-    $('#Autocomplete').mvclookup({
-        events: {
-            select: function (e, data, triggerChanges) {
-                $('#AutocompleteWorking').val(data.length ? data[0]['IsWorking'] : '');
-                $('#AutocompleteId').val(data.length ? data[0]['Id'] : '');
+    <script>
+        $('#Autocomplete').mvclookup({
+            events: {
+                select: function (e, data, triggerChanges) {
+                    $('#AutocompleteWorking').val(data.length ? data[0]['IsWorking'] : '');
+                    $('#AutocompleteId').val(data.length ? data[0]['Id'] : '');
+                }
             }
-        }
-    });
-    $('#Lookup').mvclookup({
-        events: {
-            select: function (e, data, triggerChanges) {
-                $('#LookupWorking').val(data.length ? data[0]['IsWorking'] : '');
-                $('#LookupId').val(data.length ? data[0]['Id'] : '');
+        });
+        $('#Lookup').mvclookup({
+            events: {
+                select: function (e, data, triggerChanges) {
+                    $('#LookupWorking').val(data.length ? data[0]['IsWorking'] : '');
+                    $('#LookupId').val(data.length ? data[0]['Id'] : '');
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 }

@@ -2,45 +2,44 @@
     ViewBag.Title = "MVC.Lookup installation";
 }
 
-<div class="docs content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <i class="fa fa-bars"></i>
-            Installation
-            <span class="widget-buttons">
-                <i class="content-toggle"></i>
-            </span>
+<div class="widget docs">
+    <div class="widget-header">
+        <div class="fa fa-info"></div>
+        <span>Installation</span>
+        <div class="widget-buttons">
+            <span class="fa fa-minus content-toggle"></span>
         </div>
-        <div class="widget-content">
-            <p>
-                Install MVC.Lookup package from nuget.
-            </p>
-            <pre>> Install-Package NonFactors.Lookup.Mvc6</pre>
-            <p>
-                Include lookup dialog partial view to your shared views folder, it can be found at:
-            </p>
-            <div class="row">
-                <div class="col-lg-6">
-                    <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Views\</pre>
-                </div>
-                <div class="col-lg-6">
-                    <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Views/</pre>
-                </div>
+    </div>
+    <div class="widget-content">
+        <p>
+            Install MVC.Lookup package from nuget.
+        </p>
+        <pre>> Install-Package NonFactors.Lookup.Mvc6</pre>
+        <p>
+            Include lookup dialog partial view to your shared views folder, it can be found at:
+        </p>
+        <div class="row">
+            <div class="col">
+                <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Views\</pre>
             </div>
-            <pre>
+            <div class="col">
+                <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Views/</pre>
+            </div>
+        </div>
+        <pre>
 &lt;Project name&gt;
     Views
         Shared
             <b>MvcLookup
                 _Dialog.cshtml</b></pre>
-            <p>
-                Add lookup extensions to known namespaces in _ViewImports.cshtml
-            </p>
-            <pre>@@using NonFactors.Mvc.Lookup;</pre>
-            <p>
-                Render lookup dialog's partial in layout page.
-            </p>
-            <pre>
+        <p>
+            Add lookup extensions to known namespaces in _ViewImports.cshtml
+        </p>
+        <pre>@@using NonFactors.Mvc.Lookup;</pre>
+        <p>
+            Render lookup dialog's partial in layout page.
+        </p>
+        <pre>
 &lt;html&gt;
     &lt;body&gt;
         <b>@@Html.Partial("MvcLookup/_Dialog")</b>
@@ -48,18 +47,18 @@
         @@RenderBody()
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <p>
-                Include lookup stylesheet to your project and your page, it can be found at.
-            </p>
-            <div class="row">
-                <div class="col-lg-6">
-                    <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Content\MvcLookup\</pre>
-                </div>
-                <div class="col-lg-6">
-                    <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Content/MvcLookup/</pre>
-                </div>
+        <p>
+            Include lookup stylesheet to your project and your page, it can be found at.
+        </p>
+        <div class="row">
+            <div class="col">
+                <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Content\MvcLookup\</pre>
             </div>
-            <pre>
+            <div class="col">
+                <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Content/MvcLookup/</pre>
+            </div>
+        </div>
+        <pre>
 &lt;html&gt;
     &lt;head&gt;
         <b>&lt;link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet"&gt;</b>
@@ -70,18 +69,18 @@
         @@RenderBody()
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <p>
-                Include lookup scripts after jQuery and jQueryUI scripts to your project and your page, it can be found at.
-            </p>
-            <div class="row">
-                <div class="col-lg-6">
-                    <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Scripts\MvcLookup\</pre>
-                </div>
-                <div class="col-lg-6">
-                    <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Scripts/MvcLookup/</pre>
-                </div>
+        <p>
+            Include lookup scripts after jQuery and jQueryUI scripts to your project and your page, it can be found at.
+        </p>
+        <div class="row">
+            <div class="col">
+                <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Scripts\MvcLookup\</pre>
             </div>
-            <pre>
+            <div class="col">
+                <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Scripts/MvcLookup/</pre>
+            </div>
+        </div>
+        <pre>
 &lt;html&gt;
     &lt;head&gt;
         &lt;link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet"&gt;
@@ -96,10 +95,10 @@
         <b>&lt;script src="~/Scripts/MvcLookup/mvc-lookup.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <p>
-                Initialize MVC.Lookup instances after rendering lookup html
-            </p>
-            <pre>
+        <p>
+            Initialize MVC.Lookup instances after rendering lookup html
+        </p>
+        <pre>
 &lt;html&gt;
     &lt;head&gt;
         &lt;link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet"&gt;
@@ -117,6 +116,5 @@
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-        </div>
     </div>
 </div>
