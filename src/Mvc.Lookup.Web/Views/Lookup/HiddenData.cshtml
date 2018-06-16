@@ -1,24 +1,20 @@
-﻿@model Person
-@{
+﻿@{
     ViewBag.Title = "Lookup hidden data";
 }
 
 <div class="row">
-    <div class="widget example col">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Autocomplete</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
             <div class="row">
-                <div class="col">
-                    @Html.TextBox("AutocompleteId", null, new { @class = "form-control text-center", placeholder = "Person ID" })
+                <div class="col-6">
+                    @Html.TextBox("AutocompleteId", null, new { @class = "form-control text-center", placeholder = "Person id", @readonly = "readonly" })
                 </div>
-                <div class="col">
-                    @Html.TextBox("AutocompleteWorking", null, new { @class = "form-control text-center", placeholder = "Employment status" })
+                <div class="col-6">
+                    @Html.TextBox("AutocompleteWorking", null, new { @class = "form-control text-center", placeholder = "Employment status", @readonly = "readonly" })
                 </div>
             </div>
 
@@ -27,21 +23,18 @@
             @Html.AutoComplete("Autocomplete", new PeopleLookup())
         </div>
     </div>
-    <div class="widget example col">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Lookup</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
             <div class="row">
-                <div class="col">
-                    @Html.TextBox("LookupId", null, new { @class = "form-control text-center", placeholder = "Person ID" })
+                <div class="col-6">
+                    @Html.TextBox("LookupId", null, new { @class = "form-control text-center", placeholder = "Person id", @readonly = "readonly" })
                 </div>
-                <div class="col">
-                    @Html.TextBox("LookupWorking", null, new { @class = "form-control text-center", placeholder = "Employment status" })
+                <div class="col-6">
+                    @Html.TextBox("LookupWorking", null, new { @class = "form-control text-center", placeholder = "Employment status", @readonly = "readonly" })
                 </div>
             </div>
 
@@ -53,88 +46,64 @@
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-@@Html.TextBox(<span class="str">"PersonId"</span>)
+<code>@@Html.TextBox(<span class="str">"PersonId"</span>)
 @@Html.TextBox(<span class="str">"PersonIsWorking"</span>)
-@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
+@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
 </pre>
         </div>
     </div>
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-@@Html.TextBox(<span class="str">"PersonId"</span>)
+<code>@@Html.TextBox(<span class="str">"PersonId"</span>)
 @@Html.TextBox(<span class="str">"PersonIsWorking"</span>)
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
+@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
 </pre>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-12">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Javascript</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup({
+<code><span class="kwd">new</span> <span class="cls">MvcLookup</span>(document.getElementById(<span class="str">'Id'</span>), {
     events: {
-        select: <span class="kwd">function</span> (e, data, triggerChanges) {
-            $(<span class="str">'#PersonIsWorking'</span>).val(data.length ? data[0][<span class="str">'IsWorking'</span>] : <span class="str">''</span>);
-            $(<span class="str">'#PersonId'</span>).val(data.length ? data[0][<span class="str">'Id'</span>] : <span class="str">''</span>);
-
-            <span class="kwd">if</span> (triggerChanges) {
-                $(<span class="str">'#PersonIsWorking'</span>).change();
-                $(<span class="str">'#PersonId'</span>).change();
-            }
+        select: function (data, triggerChanges) {
+            document.getElementById(<span class="str">'PersonIsWorking'</span>).value = data.length ? data[0].IsWorking : <span class="str">''</span>;
+            document.getElementById(<span class="str">'PersonId'</span>).value = data.length ? data[0].Id : <span class="str">''</span>;
         }
     }
-});
-</code>
+});</code>
 </pre>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
-            <span>PeopleLookup</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
+            <span>Lookup</span>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-<span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">Person</span>&gt;
+<code><span class="kwd">public class</span> <span class="cls">PeopleLookup</span> : <span class="cls">MvcLookup</span>&lt;<span class="cls">Person</span>&gt;
 {
     <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
 
@@ -152,29 +121,26 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
         <span class="kwd">return</span> Context.Set&lt;<span class="cls">Person</span>&gt;();
     }
 
-    <span class="kwd">public override void</span> AddData(<span class="cls">Dictionary</span>&lt;<span class="cls">String</span>, <span class="cls">String</span>&gt; row, <span class="cls">Person</span> model)
+    <span class="kwd">public override void</span> FormData(<span class="cls">Person</span> model)
     {
-        <span class="kwd">base</span>.AddData(row, model);
+        <span class="cls">Dictionary</span>&lt;<span class="cls">String</span>, <span class="cls">String</span>&gt; data = <span class="kwd">base</span>.FormData(model);
 
-        row[<span class="str">"IsWorking"</span>] = GetIsWorkingStringFromBoolean(model.IsWorking);
+        data[<span class="str">"IsWorking"</span>] = GetIsWorkingStringFromBoolean(model.IsWorking);
+
+        <span class="kwd">return</span> data;
     }
-}
-</code>
+}</code>
 </pre>
         </div>
     </div>
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
-            <span>Person</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
+            <span>Model</span>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-<span class="kwd">public class</span> <span class="cls">Person</span>
+<code><span class="kwd">public class</span> <span class="cls">Person</span>
 {
     [<span class="cls">LookupColumn</span>(Hidden = <span class="kwd">true</span>)]
     <span class="kwd">public</span> <span class="cls">Int32</span> Id { <span class="kwd">get</span>; <span class="kwd">set</span>; }
@@ -196,8 +162,7 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
     <span class="kwd">public</span> <span class="cls">DateTime</span> Birthday { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
     <span class="kwd">public</span> <span class="cls">Boolean</span>? IsWorking { <span class="kwd">get</span>; <span class="kwd">set</span>; }
-}
-</code>
+}</code>
 </pre>
         </div>
     </div>
@@ -205,19 +170,19 @@ $(<span class="str">'.mvc-lookup'</span>).mvclookup({
 
 @section scripts {
     <script>
-        $('#Autocomplete').mvclookup({
+        new MvcLookup(document.getElementById('Autocomplete'), {
             events: {
-                select: function (e, data, triggerChanges) {
-                    $('#AutocompleteWorking').val(data.length ? data[0]['IsWorking'] : '');
-                    $('#AutocompleteId').val(data.length ? data[0]['Id'] : '');
+                select: function (data, triggerChanges) {
+                    document.getElementById('AutocompleteWorking').value = data.length ? data[0].IsWorking : '';
+                    document.getElementById('AutocompleteId').value = data.length ? data[0].Id : '';
                 }
             }
         });
-        $('#Lookup').mvclookup({
+        new MvcLookup(document.getElementById('Lookup'), {
             events: {
-                select: function (e, data, triggerChanges) {
-                    $('#LookupWorking').val(data.length ? data[0]['IsWorking'] : '');
-                    $('#LookupId').val(data.length ? data[0]['Id'] : '');
+                select: function (data, triggerChanges) {
+                    document.getElementById('LookupWorking').value = data.length ? data[0].IsWorking : '';
+                    document.getElementById('LookupId').value = data.length ? data[0].Id : '';
                 }
             }
         });

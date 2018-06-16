@@ -13,7 +13,7 @@
     .logo a {
         margin-left: 0.5em;
         font-size: 84px;
-        color: #FFFFFF;
+        color: #ffffff;
     }
 
     .logo .version {
@@ -23,6 +23,10 @@
         font-size: 14px;
         line-height: 2;
     }
+
+.install-note {
+    background: rgba(204, 255, 201, 0.35);
+}
 
 .sidebar-search {
     background: rgba(255, 255, 255, 0.7);
@@ -49,12 +53,12 @@
 
         .sidebar ul a:hover,
         .sidebar ul a:focus {
-            background: #FFFFFF;
-            color: #448FBA;
+            background: #ffffff;
+            color: #448fba;
         }
 
 .sidebar li + li {
-    border-top: 1px solid #B8B8B8;
+    border-top: 1px solid #b8b8b8;
 }
 
 .widget {
@@ -65,7 +69,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     align-items: center;
     padding: 8px 12px;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 16px;
     display: flex;
 }
@@ -73,19 +77,6 @@
     .widget-header > span {
         padding-left: 10px;
         flex: 1;
-    }
-
-.widget-buttons {
-    cursor: pointer;
-    padding: 0 5px;
-}
-
-    .widget-buttons span {
-        padding-left: 10px;
-    }
-
-    .widget-buttons:hover {
-        color: #DDDDDD;
     }
 
 .widget-content {
@@ -102,19 +93,19 @@
 }
 
 .docs .widget-header {
-    background: #62BD6B;
+    background: #62bd6b;
 }
 
 .example .widget-header {
-    background: #8C86D7;
+    background: #8c86d7;
 }
 
 .example .widget-content {
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 .code .widget-header {
-    background: #479AE2;
+    background: #479ae2;
 }
 
 p {
@@ -122,35 +113,37 @@ p {
 }
 
 pre {
-    border: 1px solid #E2E2E2;
-    background: #FFFFFF;
-    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    background: #ffffff;
+    padding: 9px 15px;
     margin: 0;
 }
 
     pre .com {
         font-weight: bold;
-        color: #15A915;
+        color: #15a915;
     }
 
     pre .cls {
-        color: #2AADBA;
+        color: #2aadba;
     }
 
     pre .kwd {
-        color: #084DFF;
+        color: #084dff;
     }
 
     pre .str {
-        color: #CC6500;
+        color: #cc6500;
     }
 
+.mvc-lookup-browser:focus,
 .mvc-lookup-focus .mvc-lookup-control {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     border-color: #80bdff;
+    outline: none;
 }
 
-.mvc-lookup-dialog thead > tr > th {
-    vertical-align: middle;
-    text-align: center;
+.mvc-lookup-browser:active {
+    border-color: #ced4da;
+    box-shadow: none;
 }

@@ -1,166 +1,141 @@
-﻿@model Person
-@{
+﻿@{
     ViewBag.Title = "Lookup javascript API";
 }
 
 <div class="row">
-    <div class="widget example col">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Autocomplete</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
             @Html.AutoComplete("Autocomplete", new PeopleLookup())
         </div>
     </div>
-    <div class="widget example col">
+    <div class="widget code col-xl-6">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+        </div>
+        <div class="widget-content">
+<pre>
+<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+</pre>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Lookup</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
             @Html.Lookup("Lookup", new PeopleLookup())
         </div>
     </div>
-    <div class="widget example col">
+    <div class="widget code col-xl-6">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+        </div>
+        <div class="widget-content">
+<pre>
+<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+</pre>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Multi lookup</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
             @Html.Lookup("MultiLookup", new PeopleLookup() { Multi = true })
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
-</pre>
-        </div>
-    </div>
-    <div class="widget code col">
-        <div class="widget-header">
-            <div class="fa fa-code"></div>
-            <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
-        </div>
-        <div class="widget-content">
-<pre>
-<code>
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
-</pre>
-        </div>
-    </div>
-    <div class="widget code col">
-        <div class="widget-header">
-            <div class="fa fa-code"></div>
-            <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
-        </div>
-        <div class="widget-content">
-<pre>
-<code>
-@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
+<code>@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
 </pre>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Javascript configuration</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup({
-    readonly: <span class="kwd">false</span>, <span class="com">// Lookup readonly state</span>
-    preserveSearch: <span class="kwd">true</span>, <span class="com">// Indicates if dialog search value should be preserved after close</span>
+<code><span class="kwd">var</span> element = document.querySelector(<span class="str">'.mvc-lookup'</span>);
+<span class="kwd">var</span> lookup = <span class="kwd">new</span> MvcLookup(element, {
+    readonly: <span class="kwd">false</span>, <span class="com">// Disables lookup if set to true.</span>
+    loadingDelay: 300, <span class="com">// The delay period in milliseconds for loading circles to appear.</span>
+    searchDelay: 500, <span class="com">// The debounce period in milliseconds for search inputs.</span>
     events: {
-        select: <span class="kwd">function</span> (e, data, triggerChanges) {
-            <span class="com">// e - event, preventing the default, prevents default lookup selection logic</span>
-            <span class="com">// data - an array of selected data</span>
-            <span class="com">// triggerChanges - a boolean specifying if input changes should be triggered</span>
+        select: <span class="kwd">function</span> (data, triggerChanges) {
+            <span class="com">// data - an array of selected data.</span>
+            <span class="com">// triggerChanges - a boolean specifying if input change events should be triggered.</span>
+
+            <span class="com">// returning false prevents the default lookup selection logic.</span>
         },
-        filterChange: <span class="kwd">function</span> (e) {
-            <span class="com">// e -  event, preventing the default, prevents default lookup filter change logic</span>
+        filterChange: <span class="kwd">function</span> (input) {
+            <span class="com">// input - original filter value input, which triggered the event.</span>
+
+            <span class="com">// returning false prevents the default lookup filter check.</span>
         }
     },
     autocomplete: {
-        <span class="com">// JQuery UI autocomplete options</span>
+        sort: <span class="str">'Income'</span>, <span class="com">// Sort column to be used when querying autocomplete results.</span>
+        order: <span class="str">'desc'</span>, <span class="com">// Sort order to be used when sorting autocomplete results.</span>
+        minLength: 1, <span class="com">// The minimum number of characters before a search is performed.</span>
+        rows: 20 <span class="com">// Number of results to show in autocomplete.</span>
     },
     dialog: {
-        <span class="com">// JQuery UI dialog options</span>
-    },
-    spinner: {
-        <span class="com">// JQuery UI spinner options</span>
-    },
-    resizable: {
-        <span class="com">// JQuery UI resizable options</span>
+        preserveSearch: <span class="kwd">true</span>, <span class="com">// Indicates if dialog search value should be preserved after close.</span>
+        openDelay: 100, <span class="com">// The time in milliseconds before dialog is opened (to allow data to load).</span>
+        rows : {
+            min: 1, <span class="com">The minimum allowed value for rows.</span>
+            max: 99 <span class="com">The maximum allowed value for rows.</span>
+        }
     }
-});
-</code>
+});</code>
 </pre>
         </div>
     </div>
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Javascript methods</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-<span class="com">// Returns lookup's javascript instance</span>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'instance'</span>);
+<code><span class="kwd">var</span> element = document.querySelector(<span class="str">'.mvc-lookup'</span>);
 
-<span class="com">// Reloads the lookup</span>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'reload'</span>);
+<span class="com">// Initializes new or returns an existing lookup's instance with applied options.</span>
+<span class="kwd">var</span> lookup = new MvcLookup(element[, options]);
 
-<span class="com">// Loads and selects first row</span>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'selectFirst'</span>);
+lookup.browse(); <span class="com">// Opens lookup dialog for browsing data.</span>
 
-<span class="com">// Loads and selects a single row, only if it's one</span>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'selectSingle'</span>);
+lookup.reload([triggerChanges = <span class="kwd">true</span>]); <span class="com">// Reloads lookup values from the hidden id values.</span>
 
-<span class="com">// Opens lookup's dialog browser</span>
-$(<span class="str">'.mvc-lookup'</span>).mvclookup(<span class="str">'browse'</span>);
-</code>
+lookup.selectFirst([triggerChanges = <span class="kwd">true</span>]); <span class="com">// Automatically selects first element.</span>
+
+lookup.selectSingle([triggerChanges = <span class="kwd">true</span>]); <span class="com">// Automatically selects single element only or nothing.</span></code>
+
+lookup.set(options); <span class="com">// Merges and applies newly specified options with the current ones.</span></code>
 </pre>
         </div>
     </div>

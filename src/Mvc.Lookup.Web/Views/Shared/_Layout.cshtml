@@ -12,7 +12,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
     <environment names="Development">
-        <link href="~/Content/JQueryUI/jquery-ui.css" rel="stylesheet">
         <link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet">
         <link href="~/Content/FontAwesome/font-awesome.css" rel="stylesheet">
         <link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet">
@@ -25,7 +24,7 @@
 <body class="container-fluid">
     @Html.Partial("MvcLookup/_Dialog")
     <div class="row">
-        <div class="sidebar col-lg-2">
+        <div class="sidebar col-xl-2">
             <div class="logo">
                 <a href="https://github.com/NonFactors/MVC6.Lookup">
                     <span class="fa fa-github">
@@ -56,9 +55,6 @@
                     @Html.ActionLink("Lookup hidden data", "HiddenData", "Lookup")
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup multi selection", "Multi", "Lookup")
-                </li>
-                <li>
                     @Html.ActionLink("Lookup additional filters", "AdditionalFilters", "Lookup")
                 </li>
                 <li>
@@ -70,16 +66,13 @@
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Lookup id value", "Id", "Lookup")
+                    @Html.ActionLink("Lookup id", "Id", "Lookup")
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup autocomplete value", "Autocomplete", "Lookup")
+                    @Html.ActionLink("Lookup label", "Label", "Lookup")
                 </li>
             </ul>
             <ul>
-                <li>
-                    @Html.ActionLink("Lookup column key", "Key", "Column")
-                </li>
                 <li>
                     @Html.ActionLink("Lookup column position", "Position", "Column")
                 </li>
@@ -127,9 +120,6 @@
     </div>
 
     <environment names="Development">
-        <script src="~/Scripts/JQuery/jquery.js"></script>
-        <script src="~/Scripts/JQueryUI/jquery-ui.js"></script>
-
         <script src="~/Scripts/MvcLookup/mvc-lookup.js"></script>
         <script src="~/Scripts/Shared/site.js"></script>
     </environment>

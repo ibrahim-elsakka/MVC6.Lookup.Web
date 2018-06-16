@@ -6,9 +6,6 @@
     <div class="widget-header">
         <div class="fa fa-info"></div>
         <span>Installation</span>
-        <div class="widget-buttons">
-            <span class="fa fa-minus content-toggle"></span>
-        </div>
     </div>
     <div class="widget-content">
         <p>
@@ -19,30 +16,44 @@
             Include lookup dialog partial view to your shared views folder, it can be found at:
         </p>
         <div class="row">
-            <div class="col">
+            <div class="col-xl-6">
                 <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Views\</pre>
             </div>
-            <div class="col">
+            <div class="col-xl-6">
                 <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Views/</pre>
             </div>
         </div>
-        <pre>
+        <div class="row">
+            <div class="col-xl-6">
+                <p>MVC views application</p>
+                <pre>
 &lt;Project name&gt;
     Views
         Shared
-            <b>MvcLookup
-                _Dialog.cshtml</b></pre>
+<b class="install-note">+           MvcLookup</b>
+<b class="install-note">+               _Dialog.cshtml</b></pre>
+            </div>
+            <div class="col-xl-6">
+                <p>Razor pages application</p>
+                <pre>
+&lt;Project name&gt;
+    Pages
+<b class="install-note">+       MvcLookup</b>
+<b class="install-note">+           _Dialog.cshtml</b>
+                </pre>
+            </div>
+        </div>
         <p>
             Add lookup extensions to known namespaces in _ViewImports.cshtml
         </p>
         <pre>@@using NonFactors.Mvc.Lookup;</pre>
         <p>
-            Render lookup dialog's partial in layout page.
+            Render a single lookup dialog's partial in the page.
         </p>
         <pre>
 &lt;html&gt;
     &lt;body&gt;
-        <b>@@Html.Partial("MvcLookup/_Dialog")</b>
+<b class="install-note">+       @@Html.Partial("MvcLookup/_Dialog")</b>
 
         @@RenderBody()
     &lt;/body&gt;
@@ -51,17 +62,17 @@
             Include lookup stylesheet to your project and your page, it can be found at.
         </p>
         <div class="row">
-            <div class="col">
+            <div class="col-xl-6">
                 <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Content\MvcLookup\</pre>
             </div>
-            <div class="col">
+            <div class="col-xl-6">
                 <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Content/MvcLookup/</pre>
             </div>
         </div>
         <pre>
 &lt;html&gt;
     &lt;head&gt;
-        <b>&lt;link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet"&gt;</b>
+<b class="install-note">+       &lt;link href="~/Content/MvcLookup/mvc-lookup.css" rel="stylesheet"&gt;</b>
     &lt;/head&gt;
     &lt;body&gt;
         @@Html.Partial("MvcLookup/_Dialog")
@@ -70,13 +81,13 @@
     &lt;/body&gt;
 &lt;/html&gt;</pre>
         <p>
-            Include lookup scripts after jQuery and jQueryUI scripts to your project and your page, it can be found at.
+            Include lookup scripts to your project and your page, it can be found at.
         </p>
         <div class="row">
-            <div class="col">
+            <div class="col-xl-6">
                 <pre><b>Windows:</b> %UserProfile%\.nuget\packages\NonFactors.Lookup.Mvc6\{version}\content\Scripts\MvcLookup\</pre>
             </div>
-            <div class="col">
+            <div class="col-xl-6">
                 <pre><b>Linux/Mac:</b> ~/.nuget/packages/NonFactors.Lookup.Mvc6/{version}/content/Scripts/MvcLookup/</pre>
             </div>
         </div>
@@ -90,9 +101,7 @@
 
         @@RenderBody()
 
-        &lt;script src="~/Scripts/JQuery/jquery.js"&gt;&lt;/script&gt;
-        &lt;script src="~/Scripts/JQuery/jquery-ui.js"&gt;&lt;/script&gt;
-        <b>&lt;script src="~/Scripts/MvcLookup/mvc-lookup.js"&gt;&lt;/script&gt;</b>
+<b class="install-note">+       &lt;script src="~/Scripts/MvcLookup/mvc-lookup.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
         <p>
@@ -108,11 +117,11 @@
 
         @@RenderBody()
 
-        &lt;script src="~/Scripts/JQuery/jquery.js"&gt;&lt;/script&gt;
-        &lt;script src="~/Scripts/JQuery/jquery-ui.js"&gt;&lt;/script&gt;
         &lt;script src="~/Scripts/MvcLookup/mvc-lookup.js"&gt;&lt;/script&gt;
         &lt;script&gt;
-            <b>$('.mvc-lookup').mvclookup();</b>
+<b class="install-note">+           [].forEach.call(document.getElementsByClassName('mvc-lookup'), function(element) {</b>
+<b class="install-note">+               new MvcLookup(element);</b>
+<b class="install-note">+           });</b>
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;</pre>

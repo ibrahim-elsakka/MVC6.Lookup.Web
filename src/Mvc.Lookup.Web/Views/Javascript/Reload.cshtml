@@ -1,93 +1,82 @@
-﻿@model Person
-@{
+﻿@{
     ViewBag.Title = "Lookup reload";
 }
 
 <div class="row">
-    <div class="widget example col">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Autocomplete</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
+        </div>
+        <div class="widget-content">
+            <div class="row">
+                <div class="col-xl-9">
+                    @Html.AutoComplete("Autocomplete", new PeopleLookup())
+                </div>
+                <div class="col-xl-3 text-center">
+                    <button id="AutocompleteButton" class="btn btn-secondary">Randomize</button>
+                </div>
             </div>
         </div>
-        <div class="widget-content text-center">
-            @Html.AutoComplete("Autocomplete", new PeopleLookup())
-            <br />
-            <button id="AutocompleteButton" class="btn btn-secondary">Select random person</button>
+    </div>
+    <div class="widget code col-xl-6">
+        <div class="widget-header">
+            <div class="fa fa-code"></div>
+            <span>View</span>
+        </div>
+        <div class="widget-content">
+<pre>
+<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+</pre>
         </div>
     </div>
-    <div class="widget example col">
+</div>
+
+<div class="row">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Lookup</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
+        </div>
+        <div class="widget-content">
+            <div class="row">
+                <div class="col-xl-9">
+                    @Html.Lookup("Lookup", new PeopleLookup())
+                </div>
+                <div class="col-xl-3 text-center">
+                    <button id="LookupButton" class="btn btn-secondary">Randomize</button>
+                </div>
             </div>
         </div>
-        <div class="widget-content text-center">
-            @Html.Lookup("Lookup", new PeopleLookup())
-            <br />
-            <button id="LookupButton" class="btn btn-secondary">Select random person</button>
-        </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
-</pre>
-        </div>
-    </div>
-    <div class="widget code col">
-        <div class="widget-header">
-            <div class="fa fa-code"></div>
-            <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
-        </div>
-        <div class="widget-content">
-<pre>
-<code>
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())
-</code>
+<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
 </pre>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-12">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Javascript</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-$(<span class="str">'button'</span>).on(<span class="str">'click'</span>, <span class="kwd">function</span>() {
+<code>document.querySelector(<span class="str">'button'</span>).addEventListener(<span class="str">'click'</span>, <span class="kwd">function</span>() {
+    <span class="kwd">var</span> element = document.getElementById(<span class="str">'Id'</span>);
     <span class="kwd">var</span> triggerChanges = <span class="kwd">true</span>;
-    $(<span class="str">'#Id'</span>).val(Math.random() * 20 + 1);
 
-    $(<span class="str">'#Id'</span>).mvclookup(<span class="str">'reload'</span>, triggerChanges);
-});
-</code>
+    element.value = parseInt(Math.random() * 20) + 1;
+    <span class="kwd">new</span> MvcLookup(element).reload(triggerChanges);
+});</code>
 </pre>
         </div>
     </div>
@@ -95,14 +84,16 @@ $(<span class="str">'button'</span>).on(<span class="str">'click'</span>, <span 
 
 @section scripts {
     <script>
-        $('#AutocompleteButton').on('click', function () {
-            $('#Autocomplete').val(parseInt(Math.random() * 20) + 1);
-            $('#Autocomplete').mvclookup('reload');
+        document.getElementById('AutocompleteButton').addEventListener('click', function () {
+            var autocomplete = document.getElementById('Autocomplete');
+            autocomplete.value = parseInt(Math.random() * 20) + 1;
+            new MvcLookup(autocomplete).reload();
         });
 
-        $('#LookupButton').on('click', function () {
-            $('#Lookup').val(parseInt(Math.random() * 20) + 1);
-            $('#Lookup').mvclookup('reload');
+        document.getElementById('LookupButton').addEventListener('click', function () {
+            var lookup = document.getElementById('Lookup');
+            lookup.value = parseInt(Math.random() * 20) + 1;
+            new MvcLookup(lookup).reload();
         });
     </script>
 }
