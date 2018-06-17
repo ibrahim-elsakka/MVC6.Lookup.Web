@@ -1,5 +1,5 @@
 ﻿(function () {
-    document.getElementById('SearchInput').addEventListener('keyup', function() {
+    document.getElementById('SearchInput').addEventListener('keyup', function () {
         var menus = document.querySelectorAll('.sidebar li');
         var searches = this.value.toLowerCase().split(' ');
 
@@ -28,7 +28,7 @@
         }
     });
 
-    [].forEach.call(document.getElementsByClassName('mvc-lookup'), function(element) {
+    [].forEach.call(document.getElementsByClassName('mvc-lookup'), function (element) {
         new MvcLookup(element);
     });
 }());
