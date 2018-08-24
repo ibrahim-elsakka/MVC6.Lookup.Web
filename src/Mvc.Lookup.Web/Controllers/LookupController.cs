@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NonFactors.Mvc.Lookup.Web.Lookups;
+using NonFactors.Mvc.Lookup.Web.Models;
 using System;
 using System.Globalization;
 using System.Threading;
@@ -79,8 +80,8 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         [HttpGet]
         public JsonResult AllPeople(LookupFilter filter, Int32? autocompleteIncome, Int32? lookupIncome, Boolean? isWorking)
         {
-            filter.AdditionalFilters["IsWorking"] = isWorking;
-            filter.AdditionalFilters["Income"] = autocompleteIncome ?? lookupIncome;
+            filter.AdditionalFilters[nameof(Person.IsWorking)] = isWorking;
+            filter.AdditionalFilters[nameof(Person.Income)] = autocompleteIncome ?? lookupIncome;
 
             return Json(new PeopleLookup { Filter = filter }.GetData());
         }
@@ -90,14 +91,6 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         {
             CultureInfo.CurrentCulture = new CultureInfo("de");
             CultureInfo.CurrentUICulture = new CultureInfo("de");
-
-            return Json(new PeopleLookup { Filter = filter }.GetData());
-        }
-
-        [HttpGet]
-        public JsonResult AllPeopleWithIncome(LookupFilter filter, Int32? autocompleteIncome)
-        {
-            filter.AdditionalFilters["Income"] = autocompleteIncome;
 
             return Json(new PeopleLookup { Filter = filter }.GetData());
         }

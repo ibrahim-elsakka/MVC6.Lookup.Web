@@ -66,7 +66,7 @@
     [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> AllPeople(<span class="cls">LookupFilter</span> filter, <span class="cls">Boolean</span>? isWorking)
     {
-        filter.AdditionalFilters[<span class="str">"IsWorking"</span>] = isWorking;
+        filter.AdditionalFilters[<span class="kwd">nameof</span>(<span class="cls">Person</span>.IsWorking)] = isWorking;
 
         <span class="kwd">return</span> Json(<span class="kwd">new</span> <span class="cls">PeopleLookup</span>(Context) { Filter = filter }.GetData());
     }

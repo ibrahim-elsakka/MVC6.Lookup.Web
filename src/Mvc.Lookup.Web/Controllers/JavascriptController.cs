@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NonFactors.Mvc.Lookup.Web.Lookups;
+using NonFactors.Mvc.Lookup.Web.Models;
 using System;
 
 namespace NonFactors.Mvc.Lookup.Web.Controllers
@@ -58,8 +59,8 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         [HttpGet]
         public JsonResult AllPeople(LookupFilter filter, Int32? autocompleteIncome, Int32? lookupIncome, Boolean? isWorking)
         {
-            filter.AdditionalFilters["IsWorking"] = isWorking;
-            filter.AdditionalFilters["Income"] = autocompleteIncome ?? lookupIncome;
+            filter.AdditionalFilters[nameof(Person.IsWorking)] = isWorking;
+            filter.AdditionalFilters[nameof(Person.Income)] = autocompleteIncome ?? lookupIncome;
 
             return Json(new PeopleLookup { Filter = filter }.GetData());
         }
