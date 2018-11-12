@@ -1,15 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Lookup dialog title";
+    ViewBag.Title = "Lookup placeholder";
 }
 
 <div class="row">
     <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
-            <span>Lookup</span>
+            <span>Autocomplete</span>
         </div>
         <div class="widget-content">
-            <div mvc-lookup="Lookup" url="AllPeople" title="People"></div>
+            <div mvc-lookup="Autocomplete" url="AllPeople" title="People" placeholder="Search..." browser="false"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -19,7 +19,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> placeholder<span class="kwd">="Search..."</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -29,10 +29,10 @@
     <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
-            <span>Multi lookup</span>
+            <span>Lookup</span>
         </div>
         <div class="widget-content">
-            <div mvc-lookup="LookupSearch" url="AllPeople" title="People search" multi="true"></div>
+            <div mvc-lookup="Lookup" url="AllPeople" title="People" placeholder="Search..."></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -42,7 +42,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Ids"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People search"</span> multi<span class="kwd">="true"</span>&gt;&lt;/div&gt;</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> placeholder<span class="kwd">="Search..."</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>

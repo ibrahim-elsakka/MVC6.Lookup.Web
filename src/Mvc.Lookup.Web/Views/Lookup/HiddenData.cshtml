@@ -11,16 +11,16 @@
         <div class="widget-content">
             <div class="row">
                 <div class="col-6">
-                    @Html.TextBox("AutocompleteId", null, new { @class = "form-control text-center", placeholder = "Person id", @readonly = "readonly" })
+                    <input id="AutocompleteId" class="form-control text-center" placeholder="Person id" readonly />
                 </div>
                 <div class="col-6">
-                    @Html.TextBox("AutocompleteWorking", null, new { @class = "form-control text-center", placeholder = "Employment status", @readonly = "readonly" })
+                    <input id="AutocompleteWorking" class="form-control text-center" placeholder="Employment status" readonly />
                 </div>
             </div>
 
             <br />
 
-            @Html.AutoComplete("Autocomplete", new PeopleLookup())
+            <div mvc-lookup="Autocomplete" url="AllPeople" title="People" browser="false"></div>
         </div>
     </div>
     <div class="widget example col-xl-6">
@@ -31,16 +31,16 @@
         <div class="widget-content">
             <div class="row">
                 <div class="col-6">
-                    @Html.TextBox("LookupId", null, new { @class = "form-control text-center", placeholder = "Person id", @readonly = "readonly" })
+                    <input id="LookupId" class="form-control text-center" placeholder="Person id" readonly />
                 </div>
                 <div class="col-6">
-                    @Html.TextBox("LookupWorking", null, new { @class = "form-control text-center", placeholder = "Employment status", @readonly = "readonly" })
+                    <input id="LookupWorking" class="form-control text-center" placeholder="Employment status" readonly />
                 </div>
             </div>
 
             <br />
 
-            @Html.Lookup("Lookup", new PeopleLookup())
+            <div mvc-lookup="Lookup" url="AllPeople" title="People"></div>
         </div>
     </div>
 </div>
@@ -53,9 +53,9 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.TextBox(<span class="str">"PersonId"</span>)
-@@Html.TextBox(<span class="str">"PersonIsWorking"</span>)
-@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;input id<span class="kwd">="PersonId"</span> /&gt;
+&lt;input id<span class="kwd">="PersonIsWorking"</span> /&gt;
+&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -66,9 +66,9 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.TextBox(<span class="str">"PersonId"</span>)
-@@Html.TextBox(<span class="str">"PersonIsWorking"</span>)
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;input id<span class="kwd">="PersonId"</span> /&gt;
+&lt;input id<span class="kwd">="PersonIsWorking"</span> /&gt;
+&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -84,7 +84,7 @@
 <pre>
 <code><span class="kwd">new</span> <span class="cls">MvcLookup</span>(document.getElementById(<span class="str">'Id'</span>), {
     events: {
-        select: function (data, triggerChanges) {
+        select: <span class="kwd">function</span> (data, triggerChanges) {
             document.getElementById(<span class="str">'PersonIsWorking'</span>).value = data.length ? data[0].IsWorking : <span class="str">''</span>;
             document.getElementById(<span class="str">'PersonId'</span>).value = data.length ? data[0].Id : <span class="str">''</span>;
         }
@@ -110,10 +110,6 @@
     <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()

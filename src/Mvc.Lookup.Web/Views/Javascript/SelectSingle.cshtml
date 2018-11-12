@@ -11,11 +11,11 @@
         <div class="widget-content">
             <div class="row">
                 <div class="col-xl-12">
-                    @Html.TextBox("LookupIncome", null, new { @class = "form-control text-center", placeholder = "Income (try 1050)" })
+                    <input name="LookupIncome" class="form-control text-center" placeholder="Income (try 1050)" />
                     <br />
                 </div>
                 <div class="col-xl-9">
-                    @Html.Lookup("Lookup", new PeopleLookup { AdditionalFilters = new List<String> { "LookupIncome" } })
+                    <div mvc-lookup="Lookup" url="AllPeople" title="People" filters="LookupIncome"></div>
                 </div>
                 <div class="col-xl-3 text-center">
                     <button id="LookupButton" class="btn btn-secondary">Select single</button>
@@ -30,10 +30,9 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.TextBox(<span class="str">"Income"</span>)
+<code class="tag">&lt;input name<span class="kwd">="Income"</span> /&gt;
 
-
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> filters<span class="kwd">="Income"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -75,12 +74,6 @@
     }
 
     [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
-    {
-        <span class="kwd">return</span> View();
-    }
-
-    [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> AllPeople(<span class="cls">LookupFilter</span> filter, <span class="cls">Int32</span>? income)
     {
         filter.AdditionalFilters[<span class="kwd">nameof</span>(<span class="cls">Person</span>.Income)] = income;
@@ -105,11 +98,6 @@
     <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
-        AdditionalFilters.Add(<span class="kwd">nameof</span>(<span class="cls">Person</span>.Income));
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()

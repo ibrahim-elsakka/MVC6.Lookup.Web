@@ -22,7 +22,7 @@
     </environment>
 </head>
 <body class="container-fluid">
-    @Html.Partial("MvcLookup/_Dialog")
+    <partial name="MvcLookup/_Dialog" />
     <div class="row">
         <div class="sidebar col-xl-2">
             <div class="logo">
@@ -35,82 +35,85 @@
             <input id="SearchInput" class="sidebar-search" placeholder="Search...">
             <ul>
                 <li>
-                    @Html.ActionLink("Quick start", "Index", "Home")
+                    <a href="~/">Quick start</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Installation", "Installation", "Home")
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    @Html.ActionLink("Lookup source url", "SourceUrl", "Lookup")
-                </li>
-                <li>
-                    @Html.ActionLink("Lookup dialog title", "Title", "Lookup")
-                </li>
-                <li>
-                    @Html.ActionLink("Lookup localization", "Localization", "Lookup")
-                </li>
-                <li>
-                    @Html.ActionLink("Lookup hidden data", "HiddenData", "Lookup")
-                </li>
-                <li>
-                    @Html.ActionLink("Lookup additional filters", "AdditionalFilters", "Lookup")
-                </li>
-                <li>
-                    @Html.ActionLink("Lookup initial sort options", "SortOptions", "Lookup")
-                </li>
-                <li>
-                    @Html.ActionLink("Lookup initial paging options", "PagingOptions", "Lookup")
+                    <a href="~/Home/Installation">Installation</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Lookup id", "Id", "Lookup")
+                    <a href="~/Lookup/SourceUrl">Lookup source url</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup label", "Label", "Lookup")
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    @Html.ActionLink("Lookup column position", "Position", "Column")
+                    <a href="~/Lookup/Title">Lookup dialog title</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup column css class", "CssClass", "Column")
+                    <a href="~/Lookup/Placeholder">Lookup placeholder</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup column header title", "Header", "Column")
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    @Html.ActionLink("Lookup reload", "Reload", "Javascript")
+                    <a href="~/Lookup/Localization">Lookup localization</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup browse", "Browse", "Javascript")
+                    <a href="~/Lookup/HiddenData">Lookup hidden data</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup readonly", "Readonly", "Javascript")
+                    <a href="~/Lookup/AdditionalFilters">Lookup additional filters</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup loading first row", "SelectFirst", "Javascript")
+                    <a href="~/Lookup/SortOptions">Lookup initial sort options</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Lookup loading single row", "SelectSingle", "Javascript")
+                    <a href="~/Lookup/PagingOptions">Lookup initial paging options</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Binding select event", "Select", "Javascript")
+                    <a href="~/Lookup/Id">Lookup id</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Binding filter change event", "FilterChange", "Javascript")
+                    <a href="~/Lookup/Label">Lookup label</a>
                 </li>
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Lookup javascript API", "Api", "Javascript")
+                    <a href="~/Column/Position">Lookup column position</a>
+                </li>
+                <li>
+                    <a href="~/Column/CssClass">Lookup column css class</a>
+                </li>
+                <li>
+                    <a href="~/Column/Header">Lookup column header title</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="~/Javascript/Reload">Lookup reload</a>
+                </li>
+                <li>
+                    <a href="~/Javascript/Browse">Lookup browse</a>
+                </li>
+                <li>
+                    <a href="~/Javascript/Readonly">Lookup readonly</a>
+                </li>
+                <li>
+                    <a href="~/Javascript/SelectFirst">Lookup loading first row</a>
+                </li>
+                <li>
+                    <a href="~/Javascript/SelectSingle">Lookup loading single row</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="~/Javascript/Select">Binding select event</a>
+                </li>
+                <li>
+                    <a href="~/Javascript/FilterChange">Binding filter change event</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="~/Javascript/Api">Lookup javascript API</a>
                 </li>
             </ul>
         </div>

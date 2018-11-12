@@ -9,7 +9,7 @@
             <span>Autocomplete</span>
         </div>
         <div class="widget-content">
-            @Html.AutoComplete("Autocomplete", new PeopleLookup { Url = "/Home/AllPeople" }, 2)
+            <div mvc-lookup="Autocomplete" url="~/Home/AllPeople" title="People" value="2" browser="false"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -19,7 +19,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code></pre>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code></pre>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
             <span>Lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("Lookup", new PeopleLookup { Url = "/Home/AllPeople" }, 2)
+            <div mvc-lookup="Lookup" url="~/Home/AllPeople" title="People" value="2"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -41,7 +41,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code></pre>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code></pre>
         </div>
     </div>
 </div>
@@ -53,7 +53,7 @@
             <span>Multi lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("MultiLookup", new PeopleLookup { Url = "/Home/AllPeople", Multi = true }, new[] { 3, 4 })
+            <div mvc-lookup="MultiLookup" url="~/Home/AllPeople" title="People" multi="true" value="new[] { 3, 4 }"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -63,7 +63,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>() { Multi = <span class="kwd">true</span> })</code></pre>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Ids"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> multi<span class="kwd">="true"</span>&gt;&lt;/div&gt;</code></pre>
         </div>
     </div>
 </div>
@@ -116,14 +116,6 @@
     <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
-        Title = <span class="str">"People"</span>;
-
-        Filter.Sort = <span class="str">"Income"</span>;
-        Filter.Order = <span class="cls">LookupSortOrder</span>.Desc;
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()

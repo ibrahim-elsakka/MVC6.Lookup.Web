@@ -9,7 +9,7 @@
             <span>Lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("Lookup", new PeopleLookup { Url = "LocalizedPeople", Title = "Personen" })
+            <div mvc-lookup="Lookup" url="LocalizedPeople" title="Personen"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -19,7 +19,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -32,7 +32,7 @@
             <span>Multi lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("MultiLookup", new PeopleLookup { Url = "LocalizedPeople", Multi = true, Title = "Personen" })
+            <div mvc-lookup="MultiLookup" url="LocalizedPeople" title="Personen" multi="true"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -42,7 +42,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span> { Multi = <span class="kwd">true</span> })</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Ids"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> multi<span class="kwd">="true"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -65,11 +65,6 @@
     {
         Context = context;
     }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
-        Title = <span class="str">"Personen"</span>;
-    }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()
     {
@@ -86,7 +81,7 @@
             </div>
             <div class="widget-content">
 <pre>
-<code>&lt;script&gt;
+<code class="tag">&lt;script&gt;
     MvcLookup.prototype.lang = {
         error: <span class="str">'Fehler beim Abrufen von Aufzeichnungen'</span>,
         noData: <span class="str">'Keine Daten gefunden'</span>,

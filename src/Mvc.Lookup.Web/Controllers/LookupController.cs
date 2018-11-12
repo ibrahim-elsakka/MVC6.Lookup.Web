@@ -22,6 +22,12 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult Placeholder()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult Localization()
         {
             return View();
@@ -80,8 +86,8 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
         [HttpGet]
         public JsonResult AllPeople(LookupFilter filter, Int32? autocompleteIncome, Int32? lookupIncome, Boolean? isWorking)
         {
-            filter.AdditionalFilters[nameof(Person.IsWorking)] = isWorking;
             filter.AdditionalFilters[nameof(Person.Income)] = autocompleteIncome ?? lookupIncome;
+            filter.AdditionalFilters[nameof(Person.IsWorking)] = isWorking;
 
             return Json(new PeopleLookup { Filter = filter }.GetData());
         }

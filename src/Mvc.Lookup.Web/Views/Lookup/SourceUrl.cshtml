@@ -9,7 +9,7 @@
             <span>Working people lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("Working", new PeopleLookup { Url = "AllPeople?isWorking=true" })
+            <div mvc-lookup="Working" url="AllPeople?isWorking=true" title="Working people"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -19,7 +19,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span> { Url = <span class="str">"AllPeople?isWorking=true"</span> })</code></pre>
+<code class="tag">&lt;div mvc-lookup-for=<span class="kwd">"Id"</span> url<span class="kwd">="AllPeople?isWorking=true"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code></pre>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
             <span>All people lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("All", new PeopleLookup { Url = "AllPeople" })
+            <div mvc-lookup="All" url="AllPeople" title="People"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -41,7 +41,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span> { Url = <span class="str">"AllPeople"</span> })</code></pre>
+<code class="tag">&lt;div mvc-lookup-for=<span class="kwd">"Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code></pre>
         </div>
     </div>
 </div>
@@ -87,9 +87,6 @@
     <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()

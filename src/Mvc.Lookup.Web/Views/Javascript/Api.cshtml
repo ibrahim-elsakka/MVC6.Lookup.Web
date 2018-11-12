@@ -9,7 +9,7 @@
             <span>Autocomplete</span>
         </div>
         <div class="widget-content">
-            @Html.AutoComplete("Autocomplete", new PeopleLookup())
+            <div mvc-lookup="Autocomplete" url="AllPeople" title="People" browser="false"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -19,7 +19,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -32,7 +32,7 @@
             <span>Lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("Lookup", new PeopleLookup())
+            <div mvc-lookup="Lookup" url="AllPeople" title="People"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -42,7 +42,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -55,7 +55,7 @@
             <span>Multi lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("MultiLookup", new PeopleLookup() { Multi = true })
+            <div mvc-lookup="MultiLookup" url="AllPeople" title="People" multi="true"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -65,7 +65,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Ids, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Ids"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> multi<span class="kwd">="true"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>

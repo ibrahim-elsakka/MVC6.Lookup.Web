@@ -46,7 +46,10 @@
         <p>
             Add lookup extensions to known namespaces in _ViewImports.cshtml
         </p>
-        <pre>@@using NonFactors.Mvc.Lookup;</pre>
+        <pre><b class="install-note">@@using NonFactors.Mvc.Lookup;
+
+@@addTagHelper *, Mvc.Lookup.Core // Optional for tag helpers
+</b></pre>
         <p>
             Render lookup dialog's partial in the page.
         </p>

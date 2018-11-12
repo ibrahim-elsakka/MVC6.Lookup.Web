@@ -8,15 +8,6 @@ namespace NonFactors.Mvc.Lookup.Web.Lookups
 {
     public class PeopleLookup : MvcLookup<Person>
     {
-        public PeopleLookup()
-        {
-            Title = "People";
-            Url = "AllPeople";
-            Filter.Sort = "Income";
-            Filter.Order = LookupSortOrder.Desc;
-            GetLabel = (model) => model.Name + " " + model.Surname;
-        }
-
         public override IQueryable<Person> GetModels()
         {
             return PeopleRepository.Get();
@@ -25,13 +16,14 @@ namespace NonFactors.Mvc.Lookup.Web.Lookups
         public override Dictionary<String, String> FormData(Person model)
         {
             Dictionary<String, String> data = base.FormData(model);
+            data["Label"] = model.Name + " " + model.Surname;
 
             if (model.IsWorking == true)
                 data["IsWorking"] = "Person is employed";
             else if (model.IsWorking == false)
                 data["IsWorking"] = "Person is unemployed";
             else
-                data["IsWorking"] = "It's unknown is person is employed or not";
+                data["IsWorking"] = "Unknown if employed";
 
             return data;
         }

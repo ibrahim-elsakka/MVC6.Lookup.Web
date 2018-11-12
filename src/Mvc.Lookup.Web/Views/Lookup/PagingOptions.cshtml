@@ -1,7 +1,5 @@
 ﻿@{
     ViewBag.Title = "Lookup initial paging options";
-    PeopleLookup lookup = new PeopleLookup();
-    lookup.Filter.Rows = 5;
 }
 
 <div class="row">
@@ -11,7 +9,7 @@
             <span>Autocomplete</span>
         </div>
         <div class="widget-content">
-            @Html.AutoComplete("Autocomplete", lookup)
+            <div mvc-lookup="Autocomplete" url="AllPeople" title="People" rows="5" browser="false"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -21,7 +19,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> rows<span class="kwd">="5"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -34,7 +32,7 @@
             <span>Lookup</span>
         </div>
         <div class="widget-content">
-            @Html.Lookup("Lookup", lookup)
+            <div mvc-lookup="Lookup" url="AllPeople" title="People" rows="5" page="1"></div>
         </div>
     </div>
     <div class="widget code col-xl-6">
@@ -44,7 +42,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> rows<span class="kwd">="5"</span> page<span class="kwd">="1"</span class="kwd">&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -65,12 +63,6 @@
     <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-
-    [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
-    {
-        <span class="kwd">return</span> View();
     }
 
     [<span class="cls">HttpGet</span>]
@@ -96,14 +88,6 @@
     <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
-
-        <span class="com">// Defaults to 20 rows for lookup, autocomplete is configured through javascript.</span>
-        Filter.Rows = 5;
-        Filter.Page = 0;
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()

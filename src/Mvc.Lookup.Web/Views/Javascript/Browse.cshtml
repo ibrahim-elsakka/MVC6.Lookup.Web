@@ -11,7 +11,7 @@
         <div class="widget-content">
             <div class="row">
                 <div class="col-xl-10">
-                    @Html.AutoComplete("Autocomplete", new PeopleLookup())
+                    <div mvc-lookup="Autocomplete" url="AllPeople" title="People" browser="false"></div>
                 </div>
                 <div class="col-xl-2">
                     <button id="AutocompleteButton" class="btn btn-secondary">Browse</button>
@@ -26,7 +26,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="widget-content">
             <div class="row">
                 <div class="col-xl-10">
-                    @Html.Lookup("Lookup", new PeopleLookup())
+                    <div mvc-lookup="Lookup" url="AllPeople" title="People"></div>
                 </div>
                 <div class="col-xl-2">
                     <button id="LookupButton" class="btn btn-secondary">Browse</button>
@@ -56,7 +56,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>

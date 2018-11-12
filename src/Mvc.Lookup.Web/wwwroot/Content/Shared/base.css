@@ -3,6 +3,7 @@
     font-family: 'Open Sans', sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 15px;
     font-size: 14px;
 }
 
@@ -134,6 +135,11 @@ pre {
 
     pre .str {
         color: #cc6500;
+    }
+
+    pre .tag {
+        font-weight: bold;
+        color: #8123bf;
     }
 
 .mvc-lookup-browser:focus,

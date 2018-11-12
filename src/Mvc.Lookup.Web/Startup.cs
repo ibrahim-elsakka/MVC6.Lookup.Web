@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 
 namespace NonFactors.Mvc.Lookup.Web
@@ -11,9 +13,14 @@ namespace NonFactors.Mvc.Lookup.Web
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logging)
         {
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                logging.AddConsole();
+            }
+
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles(new StaticFileOptions
             {

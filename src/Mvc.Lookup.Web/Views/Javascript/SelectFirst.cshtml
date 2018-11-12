@@ -11,7 +11,7 @@
         <div class="widget-content">
             <div class="row">
                 <div class="col-xl-9">
-                    @Html.Lookup("Lookup", new PeopleLookup())
+                    <div mvc-lookup="Lookup" url="AllPeople" title="People"></div>
                 </div>
                 <div class="col-xl-3 text-center">
                     <button id="Button" class="btn btn-secondary">Select first</button>
@@ -26,7 +26,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>

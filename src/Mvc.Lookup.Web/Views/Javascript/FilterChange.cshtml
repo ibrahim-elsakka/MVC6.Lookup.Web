@@ -9,9 +9,9 @@
             <span>Autocomplete</span>
         </div>
         <div class="widget-content">
-            @Html.TextBox("AutocompleteIncome", null, new { @class = "form-control text-center", placeholder = "Income" })
+            <input name="AutocompleteIncome" class="form-control text-center" placeholder="Income" />
             <br />
-            @Html.AutoComplete("Autocomplete", new PeopleLookup { AdditionalFilters = new List<String> { "AutocompleteIncome" } })
+            <div mvc-lookup="Autocomplete" url="AllPeople" title="People" filters="AutocompleteIncome" browser="false"></div>
         </div>
     </div>
     <div class="widget example col-xl-6">
@@ -20,9 +20,9 @@
             <span>Lookup</span>
         </div>
         <div class="widget-content">
-            @Html.TextBox("LookupIncome", null, new { @class = "form-control text-center", placeholder = "Income" })
+            <input name="LookupIncome" class="form-control text-center" placeholder="Income" />
             <br />
-            @Html.Lookup("Lookup", new PeopleLookup { AdditionalFilters = new List<String> { "LookupIncome" } })
+            <div mvc-lookup="Lookup" url="AllPeople" title="People" filters="LookupIncome"></div>
         </div>
     </div>
 </div>
@@ -35,9 +35,9 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.TextBox(<span class="str">"Income"</span>)
+<code class="tag">&lt;input name<span class="kwd">="Income"</span> /&gt;
 
-@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> filters<span class="kwd">="Income"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -48,9 +48,9 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.TextBox(<span class="str">"Income"</span>)
+<code class="tag">&lt;input name<span class="kwd">="Income"</span> /&gt;
 
-@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> filters<span class="kwd">="Income"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -94,12 +94,6 @@
     }
 
     [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
-    {
-        <span class="kwd">return</span> View();
-    }
-
-    [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> AllPeople(<span class="cls">LookupFilter</span> filter, <span class="cls">Int32</span>? income)
     {
         filter.AdditionalFilters[<span class="kwd">nameof</span>(<span class="cls">Person</span>.Income)] = income;
@@ -124,11 +118,6 @@
     <span class="kwd">public</span> PeopleLookup(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
-        AdditionalFilters.Add(<span class="kwd">nameof</span>(<span class="cls">Person</span>.Income));
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()

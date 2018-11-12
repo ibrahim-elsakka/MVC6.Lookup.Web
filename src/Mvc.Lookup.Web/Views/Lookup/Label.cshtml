@@ -9,11 +9,11 @@
             <span>Autocomplete</span>
         </div>
         <div class="widget-content">
-            @Html.TextBox("AutocompleteLabel", null, new { @class = "form-control text-center", placeholder = "Label", @readonly = "readonly" })
+            <input id="AutocompleteLabel" class="form-control text-center" placeholder="Label" readonly />
 
             <br />
 
-            @Html.AutoComplete("Autocomplete", new PeopleLookup())
+            <div mvc-lookup="Autocomplete" url="AllPeople" title="People" browser="false"></div>
         </div>
     </div>
     <div class="widget example col-xl-6">
@@ -22,11 +22,11 @@
             <span>Lookup</span>
         </div>
         <div class="widget-content">
-            @Html.TextBox("LookupLabel", null, new { @class = "form-control text-center", placeholder = "Label", @readonly = "readonly" })
+            <input id="LookupLabel" class="form-control text-center" placeholder="Label" readonly />
 
             <br />
 
-            @Html.Lookup("Lookup", new PeopleLookup())
+            <div mvc-lookup="Lookup" url="AllPeople" title="People"></div>
         </div>
     </div>
 </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span> browser<span class="kwd">="false"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="widget-content">
 <pre>
-<code>@@Html.LookupFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleLookup</span>())</code>
+<code class="tag">&lt;div mvc-lookup-for<span class="kwd">="Id"</span> url<span class="kwd">="AllPeople"</span> title<span class="kwd">="People"</span>&gt;&lt;/div&gt;</code>
 </pre>
         </div>
     </div>
@@ -71,12 +71,6 @@
     <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
     {
         Context = context;
-    }
-
-    [<span class="cls">HttpGet</span>]
-    <span class="kwd">public</span> <span class="cls">ActionResult</span> Index()
-    {
-        <span class="kwd">return</span> View();
     }
 
     [<span class="cls">HttpGet</span>]
@@ -105,10 +99,6 @@
 
         <span class="com">// Defaults to first visible column.</span>
         GetLabel = (model) => model.Name + <span class="str">" "</span> + model.Surname;
-    }
-    <span class="kwd">public</span> PeopleLookup()
-    {
-        Url = <span class="str">"AllPeople"</span>;
     }
 
     <span class="kwd">public override</span> <span class="cls">IQueryable</span>&lt;<span class="cls">Person</span>&gt; GetModels()
