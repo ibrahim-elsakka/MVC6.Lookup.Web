@@ -10,6 +10,12 @@ namespace NonFactors.Mvc.Lookup.Web.Controllers
     public class LookupController : Controller
     {
         [HttpGet]
+        public ViewResult Name()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult Title()
         {
             return View();
