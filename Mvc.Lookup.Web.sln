@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2796CD02-A577-43DF-8D83-896CDD618FCF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mvc.Lookup.Web", "src\Mvc.Lookup.Web\Mvc.Lookup.Web.csproj", "{114B7B0A-135F-4CCE-8862-42F0ED917EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mvc.Lookup.Web", "Mvc.Lookup.Web\Mvc.Lookup.Web.csproj", "{114B7B0A-135F-4CCE-8862-42F0ED917EAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,8 +18,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{114B7B0A-135F-4CCE-8862-42F0ED917EAF} = {2796CD02-A577-43DF-8D83-896CDD618FCF}
 	EndGlobalSection
 EndGlobal
